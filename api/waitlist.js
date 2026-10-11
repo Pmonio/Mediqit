@@ -1,8 +1,14 @@
 import { put } from '@vercel/blob';
 import { createHash } from 'node:crypto';
 const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const attempts=globalThis.mediqitWaitlistAttempts||(globalThis.mediqitWaitlistAttempts=new Map());
 export default async function handler(request,response){
   if(request.method!=='POST')return response.status(405).json({error:'Method not allowed.'});
+  const ip=String(request.headers['x-forwarded-for']||request.socket?.remoteAddress||'unknown').split(',')[0].trim();
+  const now=Date.now();
+  const recent=(attempts.get(ip)||[]).filter(time=>now-time<60000);
+  if(recent.length>=5)return response.status(429).json({error:'Too many attempts. Please wait a minute and try again.'});
+  recent.push(now);attempts.set(ip,recent);
   const {email,launchConsent,updatesConsent=false,company=''}=request.body||{};
   if(company)return response.status(200).json({ok:true});
   const normalized=String(email||'').trim().toLowerCase();
