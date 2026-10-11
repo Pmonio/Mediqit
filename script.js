@@ -1,7 +1,7 @@
 const form=document.querySelector('.waitlist-form');
 const success=document.querySelector('.success');
 const errorMessage=document.querySelector('.form-error');
-document.querySelectorAll('.brand-mark').forEach(mark=>{mark.style.background='none';const image=document.createElement('img');image.src='assets/mediqit-q.svg';image.alt='';Object.assign(image.style,{display:'block',width:'100%',height:'100%',objectFit:'contain'});mark.replaceChildren(image)});
+document.querySelectorAll('.brand').forEach(brand=>{const image=document.createElement('img');image.src='assets/mediqit-wordmark-v1.png';image.alt='Mediqit';Object.assign(image.style,{display:'block',width:'145px',height:'auto'});brand.replaceChildren(image);if(brand.classList.contains('inverse'))Object.assign(brand.style,{background:'#fff',padding:'7px 10px',borderRadius:'9px',width:'fit-content'})});
 document.querySelector('link[rel="icon"]')?.setAttribute('href','assets/mediqit-q.svg');
 const categoryImages=[['.product-visual.monitor','assets/bp-monitor-v1.webp'],['.product-visual.first-aid','assets/first-aid-kit-v1.webp']];
 categoryImages.forEach(([selector,source])=>{const visual=document.querySelector(selector);if(!visual)return;Object.assign(visual.style,{backgroundImage:`url('${source}')`,backgroundSize:'cover',backgroundPosition:'center'});visual.querySelectorAll(':scope > *').forEach(child=>child.style.display='none')});
