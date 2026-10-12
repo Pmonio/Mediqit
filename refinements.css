@@ -1,0 +1,130 @@
+.site-header .nav-cta {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+
+.site-header .nav-cta:hover,
+.site-header .nav-cta:focus-visible {
+  border-color: #cf1714;
+  background: #cf1714;
+}
+
+.cards article {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards article > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cards .category-actions {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+@media (min-width: 901px) {
+  .cards article {
+    min-height: 490px;
+    padding: 22px 24px 26px;
+    overflow: visible;
+  }
+
+  .cards article::after {
+    content: none;
+  }
+
+  .cards .product-visual {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 210px;
+    flex: 0 0 210px;
+    margin: 0 0 24px;
+    border-radius: 18px;
+  }
+
+  .cards .eyebrow,
+  .cards article > p:last-child {
+    display: block;
+  }
+
+  .cards h3 {
+    margin: 5px 0 10px;
+    font-size: 24px;
+  }
+
+  .cards .category-actions a {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-photo {
+    height: 215px;
+  }
+
+  .hero h1 {
+    font-size: 39px;
+    line-height: 1.03;
+  }
+
+  .hero .lead {
+    margin-bottom: 18px;
+  }
+
+  .waitlist-panel .consent-group label {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .waitlist-panel .form-note {
+    font-size: 13px;
+  }
+
+  .hero-trust .trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .essentials,
+  .how {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .student-essentials {
+    width: auto;
+    margin: 0 18px;
+    border-radius: 22px;
+  }
+
+  .student-photo {
+    height: 230px;
+    min-height: 230px;
+    background-position: 42% center;
+  }
+
+  .student-copy {
+    padding: 42px 22px 48px;
+  }
+
+  .whatsapp-fab {
+    width: 42px;
+    height: 42px;
+    right: max(16px, env(safe-area-inset-right)) !important;
+    bottom: max(82px, env(safe-area-inset-bottom)) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .whatsapp-fab svg {
+    width: 22px;
+    height: 22px;
+  }
+}
