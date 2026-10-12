@@ -120,7 +120,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20261012-pwa1" />
+    <link rel="stylesheet" href="styles.css?v=20261012-pwa2" />
   </head>
   <body>
     <header class="site-header">
@@ -147,66 +147,65 @@
     </header>
     <main id="top">
       <section class="hero">
-        <div
-          class="hero-photo"
-          role="img"
-          aria-label="Nigerian family together at home"
-        ></div>
-        <div class="photo-wash"></div>
         <div class="hero-content">
-          <div class="status"><i></i> Launching soon across Nigeria</div>
-          <h1>Health essentials, closer to home.</h1>
-          <p class="lead">
-            Mediqit is bringing home-health, first-aid and everyday medical
-            essentials closer to Nigerian households, with clear product
-            information and convenient delivery.
-          </p>
-          <div class="waitlist-panel">
-            <p class="waitlist-benefit">
-              Join the launch list for first access to our opening catalogue,
-              confirmed delivery coverage and launch updates.
+          <div class="hero-copy">
+            <div class="status"><i></i> Launching soon across Nigeria</div>
+            <h1>Health essentials, closer to home.</h1>
+            <p class="lead">
+              Mediqit is bringing home-health, first-aid and everyday medical
+              essentials closer to Nigerian households, with clear product
+              information and convenient delivery.
             </p>
-            <form class="waitlist-form" id="waitlist">
-              <div class="email-row">
-                <label class="sr-only" for="email">Email address</label
-                ><input
-                  id="email"
-                  type="email"
-                  name="email"
-                  autocomplete="email"
-                  placeholder="Enter your email address"
-                  required
-                /><button type="submit">
-                  Get launch updates <span>→</span>
-                </button>
-              </div>
-              <div class="consent-group">
-                <label
-                  ><input type="checkbox" name="launchConsent" required /><span
-                    >I agree to receive Mediqit launch emails. I can unsubscribe
-                    at any time.</span
-                  ></label
-                ><label
-                  ><input type="checkbox" name="updatesConsent" /><span
-                    >Optional: I would also like occasional product and
-                    health-essential updates.</span
-                  ></label
-                >
-              </div>
-              <label class="honey" aria-hidden="true"
-                >Company<input
-                  type="text"
-                  name="company"
-                  tabindex="-1"
-                  autocomplete="off"
-              /></label>
-              <p class="form-error" role="alert" aria-live="polite"></p>
-            </form>
-            <p class="form-note">
-              We use your email only according to your choices. See our
-              <a href="privacy.html">privacy notice</a>.
-            </p>
+            <div class="waitlist-panel">
+              <p class="waitlist-benefit">
+                Join the launch list for first access to our opening catalogue,
+                confirmed delivery coverage and launch updates.
+              </p>
+              <form class="waitlist-form" id="waitlist">
+                <div class="email-row">
+                  <label class="sr-only" for="email">Email address</label
+                  ><input
+                    id="email"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Enter your email address"
+                    required
+                  /><button type="submit">
+                    Get launch updates <span>→</span>
+                  </button>
+                </div>
+                <div class="consent-group">
+                  <label
+                    ><input type="checkbox" name="launchConsent" required /><span
+                      >I agree to receive Mediqit launch emails. I can unsubscribe
+                      at any time.</span
+                    ></label
+                  >
+                </div>
+                <input type="hidden" name="updatesConsent" value="false" />
+                <label class="honey" aria-hidden="true"
+                  >Company<input
+                    type="text"
+                    name="company"
+                    tabindex="-1"
+                    autocomplete="off"
+                /></label>
+                <p class="form-error" role="alert" aria-live="polite"></p>
+              </form>
+              <p class="form-note">
+                See how we handle your information in our
+                <a href="privacy.html">privacy notice</a>.
+              </p>
+            </div>
           </div>
+          <div
+            class="hero-photo"
+            role="img"
+            aria-label="Nigerian family preparing a home-health kit with a blood-pressure monitor and first-aid pouch"
+          ></div>
+        </div>
+        <div class="hero-trust">
           <div class="trust-row">
             <span><b>✓</b> Partner-supported sourcing</span
             ><span><b>✓</b> Clear product information</span

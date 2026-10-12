@@ -1035,3 +1035,174 @@ footer {
     bottom: 82px;
   }
 }
+
+/* Approved 2026 hero refresh */
+.hero {
+  height: auto;
+  min-height: 680px;
+  padding: 38px max(5vw, 32px) 0;
+  background: linear-gradient(110deg, #f0f8ff 0%, #f7fbff 52%, #fff 52%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, 100%);
+  min-height: 590px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.03fr) minmax(480px, 0.97fr);
+  align-items: stretch;
+  gap: 34px;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 22px 0 34px;
+}
+.hero-photo {
+  position: relative;
+  inset: auto;
+  min-height: 560px;
+  height: auto;
+  border-radius: 28px 28px 0 0;
+  background: url("assets/family-hero-v2.webp") 57% center/cover no-repeat;
+  box-shadow: 0 24px 70px rgba(8, 44, 97, 0.12);
+  overflow: hidden;
+}
+.hero h1 {
+  max-width: 650px;
+  margin: 25px 0 18px;
+  font-size: clamp(54px, 5vw, 72px);
+}
+.lead {
+  max-width: 625px;
+  margin-bottom: 24px;
+}
+.waitlist-panel {
+  width: min(690px, 100%);
+  padding: 19px;
+  background: #fff;
+  backdrop-filter: none;
+}
+.consent-group {
+  display: block;
+  margin-top: 13px;
+}
+.consent-group label {
+  max-width: 590px;
+}
+.hero-trust {
+  width: min(1280px, 100%);
+  margin: auto;
+  padding: 15px 0 24px;
+}
+.hero-trust .trust-row {
+  margin: 0;
+}
+.product-visual.monitor {
+  background: #eaf6ff url("assets/bp-monitor-v1.webp") center/cover no-repeat;
+}
+.product-visual.first-aid {
+  background: #fff0ef url("assets/first-aid-kit-v1.webp") center/cover no-repeat;
+}
+.product-visual.caregiver {
+  background: #f2fbff url("assets/family-care-v1.webp") center 42%/cover no-repeat !important;
+}
+.product-visual.monitor > *,
+.product-visual.first-aid > *,
+.product-visual.caregiver > *,
+.product-visual:after {
+  display: none;
+}
+.whatsapp-fab {
+  width: 48px;
+  height: 48px;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #fff;
+  font-size: 0;
+}
+.whatsapp-fab:before {
+  content: "✆";
+  font-size: 22px;
+  line-height: 1;
+}
+
+@media (max-width: 1040px) {
+  .hero-content {
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 24px;
+  }
+  .hero-photo {
+    background-position: 53% center;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 0 0 36px;
+    background: #f4faff;
+  }
+  .hero-content {
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .hero-photo {
+    width: 100%;
+    min-height: 0;
+    height: clamp(330px, 55vw, 500px);
+    border-radius: 0;
+    background-position: center 46%;
+    box-shadow: none;
+  }
+  .hero-copy {
+    width: min(680px, 100%);
+    margin: auto;
+    padding: 28px 24px 10px;
+  }
+  .hero-trust {
+    padding: 12px 24px 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-content {
+    margin-top: 0;
+  }
+  .hero-photo {
+    height: 265px;
+    background-position: 53% 48%;
+  }
+  .hero-copy {
+    padding: 24px 18px 8px;
+  }
+  .hero h1 {
+    margin-top: 22px;
+    font-size: 43px;
+  }
+  .waitlist-panel {
+    padding: 14px;
+  }
+  .hero-trust {
+    padding: 12px 18px 0;
+  }
+  .trust-row {
+    margin-top: 0;
+  }
+  .whatsapp-fab {
+    width: 44px;
+    height: 44px;
+    right: 14px;
+    bottom: 14px;
+    padding: 0;
+    font-size: 0;
+  }
+}
