@@ -62,6 +62,17 @@ document.querySelectorAll('a[href="#waitlist"]').forEach((link) =>
     }),
   ),
 );
+document
+  .querySelectorAll('[data-analytics="category_student_interest"]')
+  .forEach((link) =>
+    link.addEventListener("click", () => {
+      const interest = document.querySelector(
+        'input[name="studentInterest"]',
+      );
+      if (interest) interest.checked = true;
+      window.setTimeout(() => document.querySelector("#email")?.focus(), 350);
+    }),
+  );
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 menuToggle?.addEventListener("click", () => {
@@ -91,6 +102,7 @@ form?.addEventListener("submit", async (event) => {
         email: data.get("email"),
         launchConsent: data.get("launchConsent") === "on",
         updatesConsent: data.get("updatesConsent") === "on",
+        studentInterest: data.get("studentInterest") === "on",
         company: data.get("company"),
       }),
     });
