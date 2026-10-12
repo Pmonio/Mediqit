@@ -989,3 +989,49 @@ footer {
     font-size: 13px;
   }
 }
+.install-app-button {
+  position: fixed;
+  right: 28px;
+  bottom: 86px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: #0876d7;
+  box-shadow: 0 14px 32px rgba(9, 40, 82, 0.24);
+  color: #fff;
+  font:
+    700 0.92rem/1 "DM Sans",
+    sans-serif;
+  cursor: pointer;
+}
+
+.install-app-button[hidden] {
+  display: none;
+}
+
+.install-app-button:hover {
+  background: #065fae;
+  transform: translateY(-1px);
+}
+
+.install-app-button:focus-visible {
+  outline: 3px solid rgba(8, 118, 215, 0.35);
+  outline-offset: 3px;
+}
+
+.install-app-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+@media (max-width: 640px) {
+  .install-app-button {
+    right: 16px;
+    bottom: 82px;
+  }
+}
