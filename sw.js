@@ -6,7 +6,7 @@ const PRECACHE = [
   "/contact.html",
   "/privacy.html",
   "/offline.html",
-  "/styles.css?v=20261012-pwa2",
+  "/styles.css?v=20261012-pwa3",
   "/page.css?v=20261012-pwa1",
   "/privacy.css?v=20261012-pwa1",
   "/script.js?v=20261012-pwa1",
