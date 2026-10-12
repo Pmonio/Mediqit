@@ -43,9 +43,14 @@ document.querySelectorAll("[data-analytics]").forEach((link) =>
   link.addEventListener("click", () => {
     const label = link.dataset.analytics;
     const whatsapp = label.startsWith("whatsapp_");
+    const social = label.startsWith("social_");
     window.va?.("event", {
-      name: whatsapp ? "whatsapp_clicked" : "social_link_clicked",
-      data: { source: label.replace(/^(social|whatsapp)_/, "") },
+      name: whatsapp
+        ? "whatsapp_clicked"
+        : social
+          ? "social_link_clicked"
+          : "category_cta_clicked",
+      data: { source: label.replace(/^(social|whatsapp|category)_/, "") },
     });
   }),
 );

@@ -286,6 +286,30 @@ h3 {
   padding: 22px 26px 30px;
   background: linear-gradient(155deg, #fff, #f2f9ff);
 }
+.category-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.category-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid rgba(8, 118, 215, 0.2);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.category-actions a:hover,
+.category-actions a:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px rgba(8, 44, 97, 0.1);
+}
 .product-visual {
   height: 175px;
   border-radius: 18px;

@@ -1,15 +1,20 @@
-const CACHE_NAME = "mediqit-pwa-v7";
+const CACHE_NAME = "mediqit-pwa-v8";
 const PRECACHE = [
   "/",
   "/index.html",
   "/about.html",
   "/contact.html",
   "/privacy.html",
+  "/blood-pressure-monitors.html",
+  "/first-aid-kits.html",
+  "/glucometers.html",
+  "/thermometers.html",
   "/offline.html",
-  "/styles.css?v=20261012-pwa7",
+  "/styles.css?v=20261012-pwa8",
   "/page.css?v=20261012-pwa1",
+  "/category.css?v=20261012-seo1",
   "/privacy.css?v=20261012-pwa1",
-  "/script.js?v=20261012-pwa1",
+  "/script.js?v=20261012-seo1",
   "/pwa.js?v=20261012-pwa1",
   "/assets/mediqit-wordmark-v1.png",
   "/assets/mediqit-app-192.png",
