@@ -310,6 +310,108 @@ h3 {
   border-color: var(--blue);
   box-shadow: 0 8px 24px rgba(8, 44, 97, 0.1);
 }
+.student-essentials {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 560px;
+  background:
+    radial-gradient(circle at 88% 15%, rgba(8, 118, 215, 0.2), transparent 34%),
+    #082c61;
+  color: #fff;
+  overflow: hidden;
+}
+.student-photo {
+  min-height: 560px;
+  background: url("assets/medical-students-v1.webp") 38% center/cover no-repeat;
+}
+.student-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 76px clamp(34px, 6vw, 92px);
+}
+.student-kicker {
+  margin: 0 0 17px;
+  color: #7fc7ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+}
+.student-status {
+  display: inline-flex;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #dcecff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.student-copy h2 {
+  max-width: 590px;
+  margin: 20px 0;
+  font-size: clamp(36px, 3.8vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.student-copy > p:not(.student-kicker) {
+  max-width: 580px;
+  margin: 0;
+  color: #c8d8e9;
+  font-size: 18px;
+  line-height: 1.68;
+}
+.student-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 28px 0 30px;
+}
+.student-products span {
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #eef6ff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.student-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 52px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+.student-copy small {
+  display: block;
+  max-width: 500px;
+  margin-top: 17px;
+  color: #9fb7d2;
+  font-size: 13px;
+  line-height: 1.55;
+}
+@media (max-width: 900px) {
+  .student-essentials { grid-template-columns: 1fr; }
+  .student-photo { min-height: 380px; background-position: 66% center; }
+  .student-copy { padding: 58px max(6vw, 24px) 68px; }
+}
+@media (max-width: 620px) {
+  .student-photo { min-height: 240px; }
+  .student-copy { padding-top: 48px; padding-bottom: 54px; }
+  .student-copy h2 { font-size: 34px; }
+  .student-copy > p:not(.student-kicker) { font-size: 17px; }
+  .student-products { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+  .student-products span { padding: 0; font-size: 13px; }
+}
 .product-visual {
   height: 175px;
   border-radius: 18px;

@@ -1,4 +1,4 @@
-const CACHE_NAME = "mediqit-pwa-v8";
+const CACHE_NAME = "mediqit-pwa-v9";
 const PRECACHE = [
   "/",
   "/index.html",
@@ -10,16 +10,17 @@ const PRECACHE = [
   "/glucometers.html",
   "/thermometers.html",
   "/offline.html",
-  "/styles.css?v=20261012-pwa8",
+  "/styles.css?v=20261012-pwa9",
   "/page.css?v=20261012-pwa1",
   "/category.css?v=20261012-seo1",
   "/privacy.css?v=20261012-pwa1",
-  "/script.js?v=20261012-seo1",
+  "/script.js?v=20261012-seo2",
   "/pwa.js?v=20261012-pwa1",
   "/assets/mediqit-wordmark-v1.png",
   "/assets/mediqit-app-192.png",
   "/assets/mediqit-app-512.png",
   "/assets/family-hero-v3.webp",
+  "/assets/medical-students-v1.webp",
   "/assets/bp-monitor-v1.webp",
   "/assets/first-aid-kit-v1.webp",
   "/assets/family-care-v1.webp",
