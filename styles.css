@@ -732,8 +732,8 @@ footer {
 .box-brand {
   position: absolute;
   z-index: 3;
-  right: 36px;
-  bottom: 107px;
+  right: 64px;
+  bottom: 142px;
   width: 104px;
   height: auto;
   object-fit: contain;
