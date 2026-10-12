@@ -679,6 +679,174 @@ footer {
     gap: 5px;
   }
 }
+
+@media (min-width: 901px) {
+  body .hero {
+    min-height: 680px;
+    padding: 0 max(5vw, 32px);
+    background: #eef8ff;
+  }
+  body .hero-content {
+    position: static;
+    width: min(1280px, 100%);
+    min-height: 610px;
+    display: block;
+  }
+  body .hero-copy {
+    position: relative;
+    z-index: 3;
+    width: 56%;
+    min-height: 610px;
+    padding: 54px 0 24px;
+  }
+  body .hero-photo {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 59%;
+    min-height: 0;
+    height: 100%;
+    border-radius: 0;
+    background-position: 52% center;
+    box-shadow: none;
+  }
+  body .hero:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, #eef8ff 0%, #eef8ff 38%, rgba(238, 248, 255, 0.92) 46%, rgba(238, 248, 255, 0.22) 58%, transparent 70%);
+  }
+  body .waitlist-panel {
+    width: 730px;
+    max-width: calc(100vw - 10vw);
+  }
+  body .hero-trust {
+    position: relative;
+    z-index: 4;
+    width: min(1280px, 100%);
+    padding: 12px 0 24px;
+  }
+}
+
+/* Exact approved hero composition */
+@media (min-width: 901px) {
+  .hero {
+    min-height: 680px;
+    padding: 0 max(5vw, 32px);
+    background: #eef8ff;
+  }
+  .hero-content {
+    position: static;
+    width: min(1280px, 100%);
+    min-height: 610px;
+    display: block;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 3;
+    width: 56%;
+    min-height: 610px;
+    padding: 54px 0 24px;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 59%;
+    min-height: 0;
+    height: 100%;
+    border-radius: 0;
+    background-position: 52% center;
+    box-shadow: none;
+  }
+  .hero:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      #eef8ff 0%,
+      #eef8ff 38%,
+      rgba(238, 248, 255, 0.92) 46%,
+      rgba(238, 248, 255, 0.22) 58%,
+      transparent 70%
+    );
+  }
+  .hero h1 {
+    font-size: clamp(56px, 5vw, 72px);
+    max-width: 680px;
+  }
+  .waitlist-panel {
+    width: 730px;
+    max-width: calc(100vw - 10vw);
+  }
+  .hero-trust {
+    position: relative;
+    z-index: 4;
+    width: min(1280px, 100%);
+    padding: 12px 0 24px;
+  }
+}
+
+@media (min-width: 901px) {
+  .essentials {
+    padding-top: 56px;
+  }
+  .section-intro {
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .section-intro > p,
+  .section-intro > span {
+    display: none;
+  }
+  .section-intro h2 {
+    font-size: 40px;
+  }
+  .cards article {
+    position: relative;
+    min-height: 180px;
+    padding: 30px 48% 28px 26px;
+    overflow: hidden;
+  }
+  .cards article:after {
+    content: "→";
+    position: absolute;
+    left: 26px;
+    bottom: 24px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #86bce8;
+    border-radius: 50%;
+    color: var(--blue);
+    font-weight: 800;
+  }
+  .product-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .cards .eyebrow,
+  .cards article > p:last-child {
+    display: none;
+  }
+  .cards h3 {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.25;
+  }
+}
 .promise {
   grid-template-columns: 1.25fr 1fr;
 }
@@ -1204,5 +1372,54 @@ footer {
     bottom: 14px;
     padding: 0;
     font-size: 0;
+  }
+}
+
+@media (min-width: 901px) {
+  body .hero {
+    min-height: 680px;
+    padding: 0 max(5vw, 32px);
+    background: #eef8ff;
+  }
+  body .hero-content {
+    position: static;
+    width: min(1280px, 100%);
+    min-height: 610px;
+    display: block;
+  }
+  body .hero-copy {
+    position: relative;
+    z-index: 3;
+    width: 56%;
+    min-height: 610px;
+    padding: 54px 0 24px;
+  }
+  body .hero-photo {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 59%;
+    min-height: 0;
+    height: 100%;
+    border-radius: 0;
+    background-position: 52% center;
+    box-shadow: none;
+  }
+  body .hero:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, #eef8ff 0%, #eef8ff 38%, rgba(238, 248, 255, 0.92) 46%, rgba(238, 248, 255, 0.22) 58%, transparent 70%);
+  }
+  body .waitlist-panel {
+    width: 730px;
+    max-width: calc(100vw - 10vw);
+  }
+  body .hero-trust {
+    position: relative;
+    z-index: 4;
+    width: min(1280px, 100%);
+    padding: 12px 0 24px;
   }
 }
