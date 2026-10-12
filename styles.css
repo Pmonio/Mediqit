@@ -706,7 +706,7 @@ footer {
     min-height: 0;
     height: 100%;
     border-radius: 0;
-    background-position: 52% center;
+    background-position: 78% center !important;
     box-shadow: none;
   }
   body .hero:after {
@@ -732,7 +732,7 @@ footer {
 .box-brand {
   position: absolute;
   z-index: 3;
-  right: 11px;
+  right: 36px;
   bottom: 107px;
   width: 104px;
   height: auto;
