@@ -729,6 +729,47 @@ footer {
   }
 }
 
+.box-brand {
+  position: absolute;
+  z-index: 3;
+  right: 11px;
+  bottom: 107px;
+  width: 104px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+.whatsapp-fab {
+  right: max(24px, env(safe-area-inset-right)) !important;
+  bottom: max(24px, env(safe-area-inset-bottom)) !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+.whatsapp-fab:before {
+  content: none !important;
+}
+.whatsapp-fab svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 900px) {
+  .box-brand {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .whatsapp-fab {
+    right: max(18px, env(safe-area-inset-right)) !important;
+    bottom: max(18px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
 /* Exact approved hero composition */
 @media (min-width: 901px) {
   .hero {
