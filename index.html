@@ -20,7 +20,13 @@
     <meta property="og:url" content="https://mediqit.com/" />
     <meta
       property="og:image"
-      content="https://mediqit.com/assets/family-hero.webp"
+      content="https://mediqit.com/assets/mediqit-social-card.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mediqit — health essentials, closer to home"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://mediqit.com/" />
@@ -54,6 +60,7 @@
             "url": "https://mediqit.com/",
             "logo": "https://mediqit.com/assets/favicon-192.png",
             "email": "hello@mediqit.com",
+            "telephone": "+2348136460777",
             "description": "An online-first Nigerian health-commerce brand for home-health, first-aid and basic medical essentials.",
             "sameAs": [
               "https://www.tiktok.com/@usemediqit",
@@ -115,10 +122,18 @@
         ><span>medi</span><span class="brand-mark" aria-hidden="true"></span
         ><span>it</span></a
       >
-      <nav aria-label="Primary navigation">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span><span></span><span></span><b class="sr-only">Open menu</b>
+      </button>
+      <nav id="primary-nav" aria-label="Primary navigation">
         <a href="#essentials">Essentials</a><a href="#how">How it works</a
-        ><a href="#faq">FAQ</a
-        ><a href="about.html">About</a><a href="contact.html">Contact</a
+        ><a href="#faq">FAQ</a><a href="about.html">About</a
+        ><a href="contact.html">Contact</a
         ><a class="nav-cta" href="#waitlist"
           >Get launch updates <span>→</span></a
         >
@@ -140,50 +155,54 @@
             essentials closer to Nigerian households, with clear product
             information and convenient delivery.
           </p>
-          <p class="waitlist-benefit">
-            Join the launch list for early catalogue access, launch information
-            and delivery updates.
-          </p>
-          <form class="waitlist-form" id="waitlist">
-            <div class="email-row">
-              <label class="sr-only" for="email">Email address</label
-              ><input
-                id="email"
-                type="email"
-                name="email"
-                autocomplete="email"
-                placeholder="Enter your email address"
-                required
-              /><button type="submit">Get launch updates <span>→</span></button>
-            </div>
-            <div class="consent-group">
-              <label
-                ><input type="checkbox" name="launchConsent" required /><span
-                  >I agree to receive Mediqit launch emails. I can unsubscribe
-                  at any time.</span
-                ></label
-              ><label
-                ><input type="checkbox" name="updatesConsent" /><span
-                  >Optional: I would also like occasional product and
-                  health-essential updates.</span
-                ></label
-              >
-            </div>
-            <label class="honey" aria-hidden="true"
-              >Company<input
-                type="text"
-                name="company"
-                tabindex="-1"
-                autocomplete="off"
-            /></label>
-            <p class="form-error" role="alert" aria-live="polite"></p>
-          </form>
-          <p class="form-note">
-            We use your email only according to your choices. See our
-            <a href="privacy.html">privacy notice</a>.
-          </p>
+          <div class="waitlist-panel">
+            <p class="waitlist-benefit">
+              Join the launch list for first access to our opening catalogue,
+              confirmed delivery coverage and launch updates.
+            </p>
+            <form class="waitlist-form" id="waitlist">
+              <div class="email-row">
+                <label class="sr-only" for="email">Email address</label
+                ><input
+                  id="email"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="Enter your email address"
+                  required
+                /><button type="submit">
+                  Get launch updates <span>→</span>
+                </button>
+              </div>
+              <div class="consent-group">
+                <label
+                  ><input type="checkbox" name="launchConsent" required /><span
+                    >I agree to receive Mediqit launch emails. I can unsubscribe
+                    at any time.</span
+                  ></label
+                ><label
+                  ><input type="checkbox" name="updatesConsent" /><span
+                    >Optional: I would also like occasional product and
+                    health-essential updates.</span
+                  ></label
+                >
+              </div>
+              <label class="honey" aria-hidden="true"
+                >Company<input
+                  type="text"
+                  name="company"
+                  tabindex="-1"
+                  autocomplete="off"
+              /></label>
+              <p class="form-error" role="alert" aria-live="polite"></p>
+            </form>
+            <p class="form-note">
+              We use your email only according to your choices. See our
+              <a href="privacy.html">privacy notice</a>.
+            </p>
+          </div>
           <div class="trust-row">
-            <span><b>✓</b> Pharmacy supply partners</span
+            <span><b>✓</b> Partner-supported sourcing</span
             ><span><b>✓</b> Clear product information</span
             ><span><b>✓</b> Delivery coverage shared at launch</span>
           </div>
@@ -286,24 +305,38 @@
         <div class="faq-list">
           <details>
             <summary>What will Mediqit sell?</summary>
-            <p>Mediqit will focus on home-health monitors, first-aid kits, wound-care products and practical everyday medical essentials.</p>
+            <p>
+              Mediqit will focus on home-health monitors, first-aid kits,
+              wound-care products and practical everyday medical essentials.
+            </p>
           </details>
           <details>
             <summary>Will Mediqit deliver across Nigeria?</summary>
-            <p>We are preparing a convenient delivery experience. Confirmed launch locations and delivery coverage will be shared before ordering opens.</p>
+            <p>
+              We are preparing a convenient delivery experience. Confirmed
+              launch locations and delivery coverage will be shared before
+              ordering opens.
+            </p>
           </details>
           <details>
             <summary>How can I know when Mediqit launches?</summary>
-            <p>Join the launch list to receive our launch date, opening catalogue and delivery updates.</p>
+            <p>
+              Join the launch list to receive our launch date, opening catalogue
+              and delivery updates.
+            </p>
           </details>
           <details>
             <summary>Does Mediqit provide medical advice?</summary>
-            <p>No. Mediqit is a health-commerce retailer and does not provide diagnosis or treatment. Speak with a qualified healthcare professional about symptoms, emergencies or treatment decisions.</p>
+            <p>
+              No. Mediqit is a health-commerce retailer and does not provide
+              diagnosis or treatment. Speak with a qualified healthcare
+              professional about symptoms, emergencies or treatment decisions.
+            </p>
           </details>
         </div>
       </section>
       <section class="final-cta">
-        <p>QUALITY HEALTHKITS WITHIN REACH</p>
+        <p>HEALTH ESSENTIALS WITHIN REACH</p>
         <h2>Be among the first to know when Mediqit launches.</h2>
         <a href="#waitlist">Get launch updates <span>→</span></a>
       </section>
@@ -314,19 +347,22 @@
           ><span>medi</span><span class="brand-mark" aria-hidden="true"></span
           ><span>it</span></a
         >
-        <p>Quality healthkits within reach.</p>
+        <p>Health essentials within reach.</p>
         <div class="social-links" aria-label="Mediqit social profiles">
-          <a data-analytics="social_instagram"
+          <a
+            data-analytics="social_instagram"
             href="https://www.instagram.com/usemediqit"
             target="_blank"
             rel="noopener noreferrer"
             >Instagram</a
-          ><a data-analytics="social_tiktok"
+          ><a
+            data-analytics="social_tiktok"
             href="https://www.tiktok.com/@usemediqit"
             target="_blank"
             rel="noopener noreferrer"
             >TikTok</a
-          ><a data-analytics="social_x"
+          ><a
+            data-analytics="social_x"
             href="https://x.com/usemediqit"
             target="_blank"
             rel="noopener noreferrer"
@@ -336,8 +372,16 @@
       </div>
       <div class="footer-links">
         <a href="#essentials">Essentials</a><a href="#how">How it works</a
-        ><a href="#faq">FAQ</a><a href="about.html">About</a><a href="contact.html">Contact</a
-        ><a href="privacy.html">Privacy</a>
+        ><a href="#faq">FAQ</a><a href="about.html">About</a
+        ><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a>
+        <a
+          class="footer-whatsapp"
+          data-analytics="whatsapp_footer"
+          href="https://wa.me/2348136460777"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
       </div>
       <p class="legal">
         Mediqit is an online health-commerce retailer. We do not provide
@@ -346,11 +390,20 @@
       </p>
       <p class="copyright">© 2026 Mediqit Healthcare Solutions</p>
     </footer>
+    <a
+      class="whatsapp-fab"
+      data-analytics="whatsapp_floating"
+      href="https://wa.me/2348136460777"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Mediqit on WhatsApp"
+      >WhatsApp</a
+    >
     <div class="success" role="status" aria-live="polite" hidden>
       <b>You’re on the list.</b
       ><span>We’ll let you know when Mediqit launches.</span>
     </div>
-    <script src="script.js?v=20261012-seo"></script>
+    <script src="script.js?v=20261012-complete"></script>
     <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   </body>
 </html>
