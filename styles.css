@@ -729,16 +729,6 @@ footer {
   }
 }
 
-.box-brand {
-  position: absolute;
-  z-index: 3;
-  right: 64px;
-  bottom: 142px;
-  width: 104px;
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
-}
 .whatsapp-fab {
   right: max(24px, env(safe-area-inset-right)) !important;
   bottom: max(24px, env(safe-area-inset-bottom)) !important;
@@ -755,12 +745,6 @@ footer {
   display: block;
   width: 25px;
   height: 25px;
-}
-
-@media (max-width: 900px) {
-  .box-brand {
-    display: none;
-  }
 }
 
 @media (max-width: 620px) {
@@ -1276,7 +1260,7 @@ footer {
   min-height: 560px;
   height: auto;
   border-radius: 28px 28px 0 0;
-  background: url("assets/family-hero-v2.webp") 57% center/cover no-repeat;
+  background: url("assets/family-hero-v3.webp") 57% center/cover no-repeat;
   box-shadow: 0 24px 70px rgba(8, 44, 97, 0.12);
   overflow: hidden;
 }
