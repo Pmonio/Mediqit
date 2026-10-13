@@ -55,64 +55,90 @@
       href="assets/apple-touch-icon.png"
     />
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://mediqit.com/#organization",
-            "name": "Mediqit",
-            "legalName": "Mediqit Healthcare Solutions",
-            "url": "https://mediqit.com/",
-            "logo": "https://mediqit.com/assets/favicon-192.png",
-            "email": "hello@mediqit.com",
-            "telephone": "+2348136460777",
-            "description": "An online-first Nigerian health-commerce brand for home-health, first-aid and basic medical supplies.",
-            "sameAs": [
-              "https://www.tiktok.com/@usemediqit",
-              "https://www.instagram.com/usemediqit",
-              "https://x.com/usemediqit"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://mediqit.com/#website",
-            "url": "https://mediqit.com/",
-            "name": "Mediqit",
-            "publisher": { "@id": "https://mediqit.com/#organization" },
-            "inLanguage": "en-NG"
-          },
-          {
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What will Mediqit sell?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Mediqit will focus on home-health monitors, first-aid kits, wound-care products and practical everyday medical supplies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Will Mediqit deliver across Nigeria?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Mediqit is preparing a convenient delivery experience. Confirmed launch locations and delivery coverage will be shared before ordering opens."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How can I know when Mediqit launches?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Join the Mediqit launch list to receive the launch date, opening catalogue and delivery updates."
-                }
-              }
-            ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mediqit.com/#organization",
+      "name": "Mediqit",
+      "legalName": "Mediqit Healthcare Solutions",
+      "url": "https://mediqit.com/",
+      "logo": "https://mediqit.com/assets/favicon-192.png",
+      "email": "hello@mediqit.com",
+      "telephone": "+2348136460777",
+      "description": "An online-first Nigerian health-commerce brand for home-health, first-aid and basic medical supplies.",
+      "sameAs": [
+        "https://www.tiktok.com/@usemediqit",
+        "https://www.instagram.com/usemediqit",
+        "https://x.com/usemediqit"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mediqit.com/#website",
+      "url": "https://mediqit.com/",
+      "name": "Mediqit",
+      "publisher": {
+        "@id": "https://mediqit.com/#organization"
+      },
+      "inLanguage": "en-NG"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I order from Mediqit now?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet. Mediqit is preparing to launch, and orders are not open. Join the launch list to receive the opening catalogue and launch announcement."
           }
-        ]
-      }
+        },
+        {
+          "@type": "Question",
+          "name": "When will Mediqit launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The launch date has not been announced. We’ll email the launch list when the date, opening catalogue and initial delivery coverage are confirmed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where will Mediqit deliver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our ambition is to serve customers across Nigeria. Initial delivery areas, costs and expected timings will be confirmed before orders open. Nationwide delivery is not yet confirmed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which products, brands and prices can I expect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The planned range includes home monitors, first-aid supplies, thermometers and clinical equipment for students. Specific brands, models, prices and availability will be published in the opening catalogue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How will I know what I’m buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We’re preparing product pages with brand and model details, specifications, package contents and compatible supplies. Confirmed sourcing and product-support information will be shared as it becomes available. You can ask product questions through our contact page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Mediqit provide medical advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Mediqit is a health-commerce retailer and does not provide diagnosis or treatment. Speak with a qualified healthcare professional about symptoms, emergencies or treatment decisions."
+          }
+        }
+      ]
+    }
+  ]
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -121,9 +147,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css?v=20261012-pwa10" />
-    <link rel="stylesheet" href="refinements.css?v=20261012-ui1" />
+    <link rel="stylesheet" href="refinements.css?v=20261013-home1" />
+    <link rel="stylesheet" href="homepage.css?v=20261013-home1" />
   </head>
-  <body>
+  <body class="home-page">
+    <a class="skip-link" href="#top">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Mediqit home"
         ><span>medi</span><span class="brand-mark" aria-hidden="true"></span
@@ -138,8 +166,8 @@
         <span></span><span></span><span></span><b class="sr-only">Open menu</b>
       </button>
       <nav id="primary-nav" aria-label="Primary navigation">
-        <a href="#essentials">Products</a><a href="#how">How it works</a
-        ><a href="#faq">FAQ</a><a href="/what-we-are-building">What we're building</a
+        <a href="#essentials">Planned products</a><a href="#how">How it works</a
+        ><a href="#faq">FAQ</a><a href="/what-we-are-building">Our story</a
         ><a href="/contact">Contact</a
         ><a class="nav-cta" href="#waitlist"
           >Get launch updates <span>→</span></a
@@ -150,18 +178,12 @@
       <section class="hero">
         <div class="hero-content">
           <div class="hero-copy">
-            <div class="status"><i></i> Launching soon across Nigeria</div>
-            <h1>Health essentials, closer to home.</h1>
-            <p class="lead">
-              Mediqit is bringing home-health monitors, first-aid supplies and
-              everyday medical products closer to Nigerian households, with clear product
-              information and convenient delivery.
-            </p>
+            <div class="status"><i></i> Preparing to launch in Nigeria</div>
+            <h1>Health essentials for the people you care for.</h1>
+            <p class="lead">Home monitors, first-aid kits and everyday medical supplies for Nigerian households—with clear specifications, package contents and delivery information.</p>
             <div class="waitlist-panel">
-              <p class="waitlist-benefit">
-                Join for early catalogue access, launch availability and
-                confirmed delivery coverage updates.
-              </p>
+              <p class="waitlist-benefit">Get first access to our opening catalogue.</p>
+              <p class="waitlist-description">Receive the launch date, product details and confirmed delivery areas by email.</p>
               <form class="waitlist-form" id="waitlist">
                 <div class="email-row">
                   <label class="sr-only" for="email">Email address</label
@@ -185,8 +207,7 @@
                   >
                   <label class="student-interest-option"
                     ><input type="checkbox" name="studentInterest" /><span
-                      >I’m interested in medical-student equipment and clinical
-                      starter kits.</span
+                      >Also send me student-kit launch information (optional).</span
                     ></label
                   >
                 </div>
@@ -198,10 +219,11 @@
                     tabindex="-1"
                     autocomplete="off"
                 /></label>
-                <p class="form-error" role="alert" aria-live="polite"></p>
+                <p class="form-error" role="alert"></p>
+                <p class="form-success" role="status" aria-live="polite" hidden></p>
               </form>
               <p class="form-note">
-                See how we handle your information in our
+                Read our
                 <a href="/privacy">privacy notice</a>.
               </p>
             </div>
@@ -212,69 +234,37 @@
             aria-label="Nigerian family preparing a home-health kit with a blood-pressure monitor and first-aid pouch"
           ></div>
         </div>
-        <div class="hero-trust">
-          <div class="trust-row">
-            <span><b>✓</b> Product details before ordering</span
-            ><span><b>✓</b> Responsive customer support</span
-            ><span><b>✓</b> Delivery coverage shared at launch</span>
-          </div>
-        </div>
       </section>
       <section class="essentials" id="essentials">
         <div class="section-intro">
           <p>WHAT IS COMING</p>
-          <h2>Made for everyday health needs.</h2>
-          <span
-            >From routine monitoring to first-aid preparation, Mediqit will make
-            useful health products easier to find, understand and order.</span
-          >
+          <h2>Explore the planned range.</h2>
+          <span>Browse category previews. Models, prices and availability will be confirmed before orders open.</span>
         </div>
         <div class="cards">
           <article>
-            <div class="product-visual monitor">
-              <span class="screen">120<small>80</small></span
-              ><i></i>
-            </div>
+            <div class="product-visual monitor" role="img" aria-label="Illustration of a home blood-pressure monitor"></div>
             <p class="eyebrow">HOME MONITORING</p>
             <h3>Home health monitors</h3>
-            <p>
-              Blood-pressure monitors, glucometers, test strips and thermometers
-              for routine checks at home.
-            </p>
+            <p>Blood-pressure monitors and glucometers for routine checks at home.</p>
             <div class="category-actions">
-              <a href="/blood-pressure-monitors">Blood-pressure monitors</a>
-              <a href="/glucometers">Glucometers</a>
-              <a href="/thermometers">Thermometers</a>
+              <a href="/blood-pressure-monitors">Preview BP monitors →</a>
+              <a href="/glucometers">Preview glucometers →</a>
             </div>
           </article>
           <article>
-            <div class="product-visual first-aid">
-              <span>+</span><i></i><b></b>
-            </div>
+            <div class="product-visual first-aid" role="img" aria-label="Illustration of an open first-aid kit"></div>
             <p class="eyebrow">FIRST AID</p>
             <h3>First-aid supplies</h3>
-            <p>
-              Ready-made kits, wound-care products and practical supplies for
-              homes, cars, workplaces and travel.
-            </p>
-            <div class="category-actions">
-              <a href="/first-aid-kits">Explore first-aid kits</a>
-            </div>
+            <p>Planned kits and wound-care supplies for homes, cars, workplaces and travel.</p>
+            <div class="category-actions"><a href="/first-aid-kits">Preview first-aid kits →</a></div>
           </article>
           <article>
-            <div class="product-visual caregiver"><span>♥</span><i></i></div>
-            <p class="eyebrow">FAMILY CARE</p>
-            <h3>Family care supplies</h3>
-            <p>
-              Practical products for parents, older adults and people caring
-              for someone at home.
-            </p>
-            <div class="category-actions">
-              <a href="/thermometers">Thermometers</a>
-              <a href="#waitlist" data-analytics="category_family_waitlist"
-                >Family-care updates</a
-              >
-            </div>
+            <div class="product-visual caregiver" role="img" aria-label="Illustration of a family using a thermometer"></div>
+            <p class="eyebrow">EVERYDAY CHECKS</p>
+            <h3>Thermometers &amp; accessories</h3>
+            <p>Thermometers for everyday checks, plus compatible test strips and accessories for home monitors.</p>
+            <div class="category-actions"><a href="/thermometers">Preview thermometers →</a></div>
           </article>
         </div>
       </section>
@@ -287,11 +277,9 @@
         <div class="student-copy">
           <p class="student-kicker">FOR MEDICAL STUDENTS</p>
           <span class="student-status">Coming soon</span>
-          <h2>Everything you need for your next clinical posting.</h2>
+          <h2>Clinical essentials for your next posting.</h2>
           <p>
-            We are preparing clinical starter kits and practical equipment for
-            medical students, with every item and specification explained
-            clearly.
+            Planned stethoscopes, examination tools and starter kits, with specifications to compare against your departmental requirements.
           </p>
           <div class="student-products" aria-label="Planned student categories">
             <span>✓ Stethoscopes</span><span>✓ Manual BP sets</span
@@ -311,48 +299,48 @@
       </section>
       <section class="how" id="how">
         <div class="how-heading">
-          <p>HOW MEDIQIT WILL WORK</p>
-          <h2>From everyday need to your doorstep.</h2>
+          <p>THE LAUNCH JOURNEY</p>
+          <h2>Join now. Choose when we launch.</h2>
         </div>
         <div class="steps">
           <article>
             <b>01</b>
-            <h3>Find what you need</h3>
-            <p>Browse products by category or household need.</p>
+            <h3>Join the launch list</h3>
+            <p>Leave your email and choose whether to receive student-kit information.</p>
           </article>
           <article>
             <b>02</b>
-            <h3>Check the details</h3>
-            <p>Review specifications, availability and delivery information.</p>
+            <h3>See the opening catalogue</h3>
+            <p>Receive product details and confirmed delivery coverage when they are ready.</p>
           </article>
           <article>
             <b>03</b>
-            <h3>Order for delivery</h3>
-            <p>Complete your order and receive it at your chosen address.</p>
+            <h3>Order when we open</h3>
+            <p>Compare products, check delivery costs and choose what suits your needs.</p>
           </article>
         </div>
       </section>
       <section class="about" id="about">
-        <p>WHAT WE'RE BUILDING</p>
-        <div>
-          <h2>Built for everyday health preparedness.</h2>
-          <span
-            >Mediqit is an online-first health-commerce brand making
-            home-health devices, first-aid supplies and basic medical products easier for
-            Nigerian households and caregivers to find, understand and
-            order.</span
-          >
+        <div class="story-layout">
+          <div class="story-copy">
+            <p class="eyebrow">WHY MEDIQIT</p>
+            <h2>Care for family. Even from another city.</h2>
+            <p>When a parent needs a monitor or the first-aid box needs restocking, finding the right supplies should be straightforward.</p>
+            <p>We’re building Mediqit for the person buying and the person using the product—with details both can understand before money changes hands.</p>
+            <a class="text-link" href="/what-we-are-building">Read our story →</a>
+          </div>
+          <div class="catalogue-standard">
+            <p class="eyebrow">OUR CATALOGUE STANDARD</p>
+            <h3>What you’ll see before ordering</h3>
+            <p>We’re preparing product pages that explain:</p>
+            <ul>
+              <li><strong>The exact product</strong><span>Brand, model and specifications, such as a monitor’s cuff-size range.</span></li>
+              <li><strong>What’s included</strong><span>Package contents and compatible supplies, including replacement test strips.</span></li>
+              <li><strong>The delivery details</strong><span>Availability, supported locations, delivery costs and expected timings.</span></li>
+            </ul>
+            <p class="catalogue-note">The catalogue is in preparation. Confirmed details will be published before ordering opens.</p>
+          </div>
         </div>
-      </section>
-      <section class="promise">
-        <div>
-          <p>OUR PROMISE</p>
-          <h2>Choosing health products should not be confusing.</h2>
-        </div>
-        <span class="promise-copy"
-          >Mediqit will provide straightforward product details, responsive
-          assistance and clear delivery information before you order.</span
-        >
       </section>
       <section class="faq" id="faq">
         <div class="faq-heading">
@@ -361,41 +349,75 @@
         </div>
         <div class="faq-list">
           <details>
-            <summary>What will Mediqit sell?</summary>
-            <p>
-              Mediqit will focus on home-health monitors, first-aid kits,
-              wound-care products and practical everyday medical supplies.
-            </p>
+            <summary>Can I order from Mediqit now?</summary>
+            <p>Not yet. Mediqit is preparing to launch, and orders are not open. Join the launch list to receive the opening catalogue and launch announcement.</p>
           </details>
           <details>
-            <summary>Will Mediqit deliver across Nigeria?</summary>
-            <p>
-              We are preparing a convenient delivery experience. Confirmed
-              launch locations and delivery coverage will be shared before
-              ordering opens.
-            </p>
+            <summary>When will Mediqit launch?</summary>
+            <p>The launch date has not been announced. We’ll email the launch list when the date, opening catalogue and initial delivery coverage are confirmed.</p>
           </details>
           <details>
-            <summary>How can I know when Mediqit launches?</summary>
-            <p>
-              Join the launch list to receive our launch date, opening catalogue
-              and delivery updates.
-            </p>
+            <summary>Where will Mediqit deliver?</summary>
+            <p>Our ambition is to serve customers across Nigeria. Initial delivery areas, costs and expected timings will be confirmed before orders open. Nationwide delivery is not yet confirmed.</p>
+          </details>
+          <details>
+            <summary>Which products, brands and prices can I expect?</summary>
+            <p>The planned range includes home monitors, first-aid supplies, thermometers and clinical equipment for students. Specific brands, models, prices and availability will be published in the opening catalogue.</p>
+          </details>
+          <details>
+            <summary>How will I know what I’m buying?</summary>
+            <p>We’re preparing product pages with brand and model details, specifications, package contents and compatible supplies. Confirmed sourcing and product-support information will be shared as it becomes available. You can ask product questions through our contact page.</p>
           </details>
           <details>
             <summary>Does Mediqit provide medical advice?</summary>
-            <p>
-              No. Mediqit is a health-commerce retailer and does not provide
-              diagnosis or treatment. Speak with a qualified healthcare
-              professional about symptoms, emergencies or treatment decisions.
-            </p>
+            <p>No. Mediqit is a health-commerce retailer and does not provide diagnosis or treatment. Speak with a qualified healthcare professional about symptoms, emergencies or treatment decisions.</p>
           </details>
         </div>
       </section>
-      <section class="final-cta">
-        <p>QUALITY HEALTHKITS WITHIN REACH</p>
-        <h2>Be among the first to know when Mediqit launches.</h2>
-        <a href="#waitlist">Get launch updates <span>→</span></a>
+      <section class="final-cta" aria-labelledby="launch-heading">
+        <p>BE READY FOR LAUNCH</p>
+        <h2 id="launch-heading">Get the opening catalogue in your inbox.</h2>
+        <p class="closing-description">Product details, the launch date and confirmed delivery areas. Unsubscribe at any time.</p>
+        <div class="waitlist-panel"><form class="waitlist-form" id="waitlist-bottom">
+                <div class="email-row">
+                  <label class="sr-only" for="email-bottom">Email address</label
+                  ><input
+                    id="email-bottom"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Enter your email address"
+                    required
+                  /><button type="submit">
+                    Get launch updates <span>→</span>
+                  </button>
+                </div>
+                <div class="consent-group">
+                  <label
+                    ><input type="checkbox" name="launchConsent" required /><span
+                      >I agree to receive Mediqit launch emails. I can unsubscribe
+                      at any time.</span
+                    ></label
+                  >
+                  <label class="student-interest-option"
+                    ><input type="checkbox" name="studentInterest" /><span
+                      >Also send me student-kit launch information (optional).</span
+                    ></label
+                  >
+                </div>
+                <input type="hidden" name="updatesConsent" value="false" />
+                <label class="honey" aria-hidden="true"
+                  >Company<input
+                    type="text"
+                    name="company"
+                    tabindex="-1"
+                    autocomplete="off"
+                /></label>
+                <p class="form-error" role="alert"></p>
+                <p class="form-success" role="status" aria-live="polite" hidden></p>
+              </form>
+          <p class="form-note">Read our <a href="/privacy">privacy notice</a>.</p>
+        </div>
       </section>
     </main>
     <footer>
@@ -404,7 +426,7 @@
           ><span>medi</span><span class="brand-mark" aria-hidden="true"></span
           ><span>it</span></a
         >
-        <p>Quality healthkits within reach.</p>
+        <p>Health essentials for the people you care for.</p>
         <div class="social-links" aria-label="Mediqit social profiles">
           <a
             data-analytics="social_instagram"
@@ -428,9 +450,9 @@
         </div>
       </div>
       <div class="footer-links">
-        <a href="#essentials">Products</a><a href="#how">How it works</a
-        ><a href="#faq">FAQ</a><a href="/what-we-are-building">What we're building</a
-        ><a href="/contact">Contact</a><a href="/privacy">Privacy</a>
+        <a href="#essentials">Planned products</a><a href="#how">How it works</a
+        ><a href="#faq">FAQ</a><a href="/what-we-are-building">Our story</a
+        ><a href="/contact">Contact</a><a href="mailto:hello@mediqit.com">hello@mediqit.com</a><a href="/privacy">Privacy</a>
         <a
           class="footer-whatsapp"
           data-analytics="whatsapp_footer"
@@ -467,11 +489,8 @@
         />
       </svg><span class="sr-only">WhatsApp</span></a
     >
-    <div class="success" role="status" aria-live="polite" hidden>
-      <b>You’re on the list.</b
-      ><span>We’ll let you know when Mediqit launches.</span>
-    </div>
-    <script src="script.js?v=20261012-seo2"></script>
+
+    <script src="script.js?v=20261013-home1"></script>
     <script src="pwa.js?v=20261012-pwa1"></script>
     <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   </body>

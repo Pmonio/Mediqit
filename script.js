@@ -1,6 +1,4 @@
-const form = document.querySelector(".waitlist-form");
-const success = document.querySelector(".success");
-const errorMessage = document.querySelector(".form-error");
+const forms = [...document.querySelectorAll(".waitlist-form")];
 document.querySelectorAll(".brand").forEach((brand) => {
   const image = document.createElement("img");
   image.src = "assets/mediqit-wordmark-v1.png";
@@ -66,15 +64,21 @@ document
   .querySelectorAll('[data-analytics="category_student_interest"]')
   .forEach((link) =>
     link.addEventListener("click", () => {
-      const interest = document.querySelector(
-        'input[name="studentInterest"]',
-      );
-      if (interest) interest.checked = true;
+      forms.forEach((form) => {
+        const interest = form.elements.namedItem("studentInterest");
+        if (interest) interest.checked = true;
+      });
       window.setTimeout(() => document.querySelector("#email")?.focus(), 350);
     }),
   );
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector("#primary-nav");
+const closeMenu = () => {
+  menuToggle?.setAttribute("aria-expanded", "false");
+  const label = menuToggle?.querySelector("b");
+  if (label) label.textContent = "Open menu";
+  primaryNav?.classList.remove("open");
+};
 menuToggle?.addEventListener("click", () => {
   const open = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!open));
@@ -82,17 +86,50 @@ menuToggle?.addEventListener("click", () => {
   primaryNav?.classList.toggle("open", !open);
 });
 primaryNav?.querySelectorAll("a").forEach((link) =>
-  link.addEventListener("click", () => {
-    menuToggle?.setAttribute("aria-expanded", "false");
-    primaryNav.classList.remove("open");
-  }),
+  link.addEventListener("click", closeMenu),
 );
-form?.addEventListener("submit", async (event) => {
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && menuToggle?.getAttribute("aria-expanded") === "true") {
+    closeMenu();
+    menuToggle.focus();
+  }
+});
+
+// Carry the visitor's choices between the two forms without checking consent for them.
+forms.forEach((form) => {
+  form.addEventListener("input", (event) => {
+    const field = event.target;
+    if (!["email", "launchConsent", "studentInterest"].includes(field.name)) return;
+    forms.forEach((other) => {
+      const message = other.querySelector(".form-success");
+      if (message) message.hidden = true;
+      other.querySelector(".form-error").classList.remove("show");
+    });
+    forms.filter((other) => other !== form).forEach((other) => {
+      const matching = other.elements.namedItem(field.name);
+      if (!matching) return;
+      if (field.type === "checkbox") matching.checked = field.checked;
+      else matching.value = field.value;
+    });
+  });
+});
+
+let submitting = false;
+forms.forEach((form) => form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (submitting) return;
+  submitting = true;
+  const errorMessage = form.querySelector(".form-error");
+  const successMessage = form.querySelector(".form-success");
   errorMessage.classList.remove("show");
+  errorMessage.textContent = "";
+  if (successMessage) successMessage.hidden = true;
   const data = new FormData(form);
   const button = form.querySelector("button");
-  button.disabled = true;
+  forms.forEach((other) => {
+    other.querySelector("button").disabled = true;
+    other.setAttribute("aria-busy", "true");
+  });
   button.firstChild.textContent = "Joining… ";
   try {
     const response = await fetch("/api/waitlist", {
@@ -115,19 +152,38 @@ form?.addEventListener("submit", async (event) => {
       name: "waitlist_joined",
       data: { productUpdates: data.get("updatesConsent") === "on" },
     });
-    form.reset();
-    success.hidden = false;
-    success.classList.add("show");
-    window.setTimeout(() => {
-      success.classList.remove("show");
-      success.hidden = true;
-    }, 4500);
+    forms.forEach((other) => {
+      other.reset();
+      other.querySelector(".form-error").classList.remove("show");
+      const message = other.querySelector(".form-success");
+      if (message) {
+        message.hidden = false;
+        message.textContent = "You’re on the list. We’ll email you when the launch date and opening catalogue are ready.";
+      }
+    });
   } catch (error) {
     window.va?.("event", { name: "waitlist_error" });
     errorMessage.textContent = error.message;
     errorMessage.classList.add("show");
   } finally {
-    button.disabled = false;
+    submitting = false;
+    forms.forEach((other) => {
+      other.querySelector("button").disabled = false;
+      other.removeAttribute("aria-busy");
+    });
     button.firstChild.textContent = "Get launch updates ";
   }
-});
+}));
+
+// Keep floating actions clear of the forms and the expanded mobile menu.
+if ("IntersectionObserver" in window && forms.length) {
+  const visibleForms = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visibleForms.add(entry.target);
+      else visibleForms.delete(entry.target);
+    });
+    document.body.classList.toggle("signup-in-view", visibleForms.size > 0);
+  }, { rootMargin: "80px 0px" });
+  forms.forEach((form) => observer.observe(form));
+}
