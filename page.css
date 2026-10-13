@@ -123,6 +123,186 @@
 .info-footer {
   margin-top: 0;
 }
+.story-page {
+  background: linear-gradient(180deg, #eef8ff 0, #fff 440px);
+  padding: 86px max(5vw, 24px) 96px;
+}
+.story-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.story-hero {
+  max-width: 920px;
+  padding: 54px 0 64px;
+}
+.story-hero h1 {
+  max-width: 900px;
+  margin: 18px 0 24px;
+  color: var(--navy);
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+.story-deck {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.6;
+}
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 30px;
+  color: #60758d;
+  font-size: 14px;
+  font-weight: 700;
+}
+.story-body {
+  max-width: 780px;
+  margin: 0 auto;
+  color: #203b59;
+  font-size: 18px;
+  line-height: 1.82;
+}
+.story-body p {
+  margin: 0 0 24px;
+}
+.story-body h2 {
+  margin: 66px 0 20px;
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+.story-body h3 {
+  margin: 8px 0 12px;
+  color: var(--navy);
+  font-size: 23px;
+  line-height: 1.2;
+}
+.story-lead {
+  color: var(--navy);
+  font: 800 26px/1.4 "Manrope", sans-serif;
+}
+.story-body blockquote {
+  margin: 34px 0;
+  padding: 30px 34px;
+  border-left: 5px solid var(--red);
+  border-radius: 0 18px 18px 0;
+  background: #fff4f4;
+  color: var(--navy);
+  font: 800 30px/1.25 "Manrope", sans-serif;
+}
+.chat-lines {
+  display: grid;
+  gap: 12px;
+  margin: 30px 0 38px;
+}
+.chat-lines span {
+  width: fit-content;
+  max-width: 90%;
+  padding: 11px 16px;
+  border-radius: 7px 18px 18px 18px;
+  background: #e9f5ff;
+  color: var(--navy);
+  font-weight: 700;
+}
+.chat-lines span:nth-child(even) {
+  justify-self: end;
+  border-radius: 18px 7px 18px 18px;
+  background: #edf9f2;
+}
+.story-stat {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 30px;
+  align-items: center;
+  margin: 54px -80px;
+  padding: 40px 46px;
+  border-radius: 28px;
+  background: var(--navy);
+  color: #fff;
+}
+.story-stat strong {
+  color: #fff;
+  font: 800 72px/1 "Manrope", sans-serif;
+}
+.story-stat p {
+  margin: 0;
+  color: #cbd9e8;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.build-pillars {
+  display: grid;
+  gap: 18px;
+  margin: 38px -80px 50px;
+}
+.build-pillars article {
+  padding: 30px 34px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+}
+.build-pillars article p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.build-pillars article a {
+  color: var(--blue);
+  font-weight: 800;
+  text-decoration: none;
+}
+.build-pillars article a:hover,
+.build-pillars article a:focus-visible {
+  text-decoration: underline;
+}
+.story-cta {
+  margin: 60px -80px 45px;
+  padding: 44px;
+  border-radius: 28px;
+  background: #eef8ff;
+}
+.story-cta h2 {
+  margin-top: 10px;
+}
+.story-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 15px 21px;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+.story-signoff {
+  margin-top: 55px !important;
+  color: var(--navy);
+  font: 800 25px/1.5 "Manrope", sans-serif;
+}
+.story-tagline {
+  color: var(--blue);
+  font-weight: 800;
+}
+.story-sources {
+  margin-top: 58px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.story-sources h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+.story-sources p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
 @media (max-width: 900px) {
   .info-hero,
   .info-grid,
@@ -134,6 +314,12 @@
   }
   .info-hero h1 {
     font-size: 47px;
+  }
+  .story-stat,
+  .build-pillars,
+  .story-cta {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 @media (max-width: 620px) {
@@ -152,5 +338,41 @@
   .page-socials a {
     width: 100%;
     text-align: center;
+  }
+  .story-page {
+    padding: 42px 18px 68px;
+  }
+  .story-hero {
+    padding: 28px 0 44px;
+  }
+  .story-hero h1 {
+    font-size: 45px;
+  }
+  .story-deck {
+    font-size: 18px;
+  }
+  .story-body {
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .story-body h2 {
+    margin-top: 48px;
+    font-size: 31px;
+  }
+  .story-body blockquote {
+    padding: 24px;
+    font-size: 25px;
+  }
+  .story-stat {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 30px 26px;
+  }
+  .story-stat strong {
+    font-size: 58px;
+  }
+  .build-pillars article,
+  .story-cta {
+    padding: 26px 22px;
   }
 }
