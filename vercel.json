@@ -1,4 +1,13 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/what-were-building",
+      "permanent": true
+    }
+  ],
   "functions": {
     "api/waitlist.js": {
       "maxDuration": 10
