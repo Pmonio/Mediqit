@@ -875,8 +875,14 @@ footer {
 
 @media (max-width: 620px) {
   .whatsapp-fab {
-    right: max(18px, env(safe-area-inset-right)) !important;
-    bottom: max(18px, env(safe-area-inset-bottom)) !important;
+    width: 40px !important;
+    height: 40px !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  }
+  .whatsapp-fab svg {
+    width: 22px;
+    height: 22px;
   }
 }
 
