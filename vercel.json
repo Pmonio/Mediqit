@@ -3,8 +3,13 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/what-were-building",
+      "destination": "/what-we-are-building",
+      "permanent": true
+    },
+    {
       "source": "/about",
-      "destination": "/what-were-building",
+      "destination": "/what-we-are-building",
       "permanent": true
     }
   ],
