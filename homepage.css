@@ -1,0 +1,118 @@
+/* Homepage refinement; other pages retain their existing layout. */
+:root { --red: #cf201c; --blue: #0964ae; }
+html { scroll-padding-top: 104px; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #0964ae; outline-offset: 4px; }
+.email-row:focus-within { border-color: #0964ae; }
+.email-row input:focus-visible { outline-offset: -4px; }
+.nav-cta span { color: inherit; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 14px 20px; background: #fff; }
+.skip-link:focus { top: 12px; }
+.form-success { margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: #e9f6ef; color: #174b30; font-size: 15px; line-height: 1.5; }
+.form-success[hidden] { display: none; }
+.form-error { font-size: 14px; line-height: 1.5; }
+.signup-in-view .whatsapp-fab, .signup-in-view .install-app-button { visibility: hidden; pointer-events: none; }
+body.home-page .hero { min-height: 0; height: auto; padding: 44px max(5vw,24px); background: #eef8ff; overflow: visible; }
+body.home-page .hero::after { content: none; }
+body.home-page .hero-content { position: relative; width: min(1200px,100%); height: auto; min-height: 0; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 40px; align-items: stretch; }
+body.home-page .hero-copy { width: 100%; min-height: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; }
+body.home-page .hero-photo { position: relative; inset: auto; width: 100%; height: auto; min-height: 500px; border-radius: 24px; background-position: 57% center !important; box-shadow: none; }
+.hero h1 { font-size: clamp(44px,4.5vw,64px); line-height: 1.06; margin: 20px 0 18px; text-wrap: balance; }
+.home-page .lead { font-size: 18px; line-height: 1.6; margin: 0 0 22px; color: #465c74; }
+body.home-page .waitlist-panel { width: 100%; max-width: 100%; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(8,44,97,.06); }
+.home-page .waitlist-benefit { font-size: 17px; margin: 0 0 6px; }
+.waitlist-description { font-size: 14px; line-height: 1.5; margin: 0 0 16px; color: #465c74; }
+.waitlist-form { width: 100%; }
+.email-row > input { padding: 14px 12px; }
+.waitlist-form button { min-height: 50px; padding: 0 16px; font: 700 14px "DM Sans",sans-serif; }
+.waitlist-form button span { margin-left: 8px; }
+.home-page .consent-group { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 12px 0 0; }
+.home-page .consent-group label { max-width: none; font-size: 14px; line-height: 1.45; color: #465c74; padding: 5px 0; cursor: pointer; gap: 10px; }
+.consent-group input { width: 18px; height: 18px; margin-top: 1px; }
+.home-page .form-note { margin: 10px 0 0; font-size: 14px; color: #465c74; }
+.home-page .form-note a { background: transparent; color: #0964ae; padding: 0; border-radius: 0; font-weight: 500; text-decoration: underline; }
+.home-page .essentials, .home-page .how, .home-page .faq, .home-page .about { padding: 60px max(5vw,24px); }
+.home-page .section-intro { display: block; max-width: 760px; margin: 0 auto 28px; text-align: center; }
+.home-page .section-intro > p, .home-page .section-intro > span { display: block; }
+.section-intro > span { font-size: 16px; margin-top: 14px; }
+.home-page .section-intro h2, .home-page .how h2, .home-page .faq h2, .home-page .final-cta h2 { font-size: clamp(30px,3.3vw,42px); line-height: 1.15; }
+.home-page .cards { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.home-page .cards article { display: flex; flex-direction: column; position: relative; min-height: 0; padding: 20px; overflow: visible; }
+.home-page .cards article::after { content: none; }
+.home-page .cards .product-visual { position: relative; inset: auto; width: 100%; height: 180px; flex: 0 0 180px; margin: 0 0 20px; border-radius: 16px; }
+.home-page .cards .eyebrow { display: block; margin: 0 0 8px; }
+.home-page .cards h3 { font-size: 23px; margin: 0 0 8px; line-height: 1.25; }
+.home-page .cards article > p:not(.eyebrow) { display: block; font-size: 16px; line-height: 1.6; color: #465c74; margin: 0; }
+.home-page .category-actions { margin-top: auto; padding-top: 18px; gap: 8px; }
+.home-page .category-actions a { min-height: 44px; padding: 10px 12px; font-size: 13px; }
+.home-page .story-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 54px; max-width: 1200px; margin: auto; }
+.story-copy h2 { font-size: clamp(32px,3.2vw,42px); line-height: 1.15; margin: 12px 0 20px; }
+.story-copy > p:not(.eyebrow) { color: #465c74; font-size: 17px; line-height: 1.65; }
+.text-link { display: inline-flex; align-items: center; min-height: 44px; color: #0964ae; font-weight: 700; }
+.catalogue-standard { background: #eef8ff; border: 1px solid var(--line); padding: 26px; border-radius: 20px; }
+.catalogue-standard h3 { font-size: 25px; margin: 10px 0; }
+.catalogue-standard > p:not(.eyebrow) { color: #465c74; line-height: 1.5; font-size: 16px; }
+.catalogue-standard ul { padding: 0; list-style: none; margin: 20px 0; }
+.catalogue-standard li { padding: 14px 0; border-top: 1px solid #cedfed; }
+.catalogue-standard strong { display: block; margin-bottom: 5px; }
+.home-page .catalogue-standard li span { font-size: 15px; line-height: 1.5; color: #465c74; }
+.catalogue-standard .catalogue-note { font-size: 14px; }
+.home-page .student-essentials { grid-template-columns: .9fr 1.1fr; min-height: 0; max-width: 1200px; margin: 0 auto 12px; border-radius: 24px; }
+.home-page .student-photo { min-height: 400px; }
+.home-page .student-copy { padding: 36px 40px; }
+.home-page .student-copy h2 { font-size: clamp(32px,3vw,42px); margin: 16px 0; line-height: 1.1; }
+.home-page .student-copy > p:not(.student-kicker) { font-size: 17px; line-height: 1.6; }
+.home-page .student-products { margin: 18px 0 22px; gap: 12px 20px; }
+.home-page .student-products span { padding: 0; }
+.home-page .student-copy small { color: #c8d8e9; font-size: 14px; }
+.how-heading, .faq-heading { margin-bottom: 26px; }
+.steps article { padding: 26px; }
+.steps h3 { margin: 16px 0 8px; }
+.final-cta { padding: 60px 24px; }
+.final-cta h2 { max-width: 760px; margin: 12px auto 14px; }
+.final-cta .closing-description { color: #465c74; max-width: 620px; margin: 0 auto 24px; font-size: 17px; line-height: 1.6; font-weight: 400; letter-spacing: 0; }
+body.home-page .final-cta .waitlist-panel { max-width: 660px; margin: auto; }
+.home-page footer { grid-template-columns: 1fr 1fr 1.4fr; align-items: start; }
+.home-page .copyright { grid-column: 1 / -1; margin: 0; text-align: left; }
+.footer-links a { font-size: 14px; }
+@media (max-width: 900px) {
+  html { scroll-padding-top: 90px; }
+  body.home-page .hero { padding: 28px 24px; }
+  body.home-page .hero-content { display: flex; flex-direction: column; gap: 24px; }
+  body.home-page .hero-copy { max-width: 680px; margin: auto; }
+  body.home-page .hero-photo { min-height: 0; height: 260px; max-width: 680px; margin: auto; background-position: center 52% !important; }
+  .home-page .hero h1 { font-size: 48px; }
+  .home-page .cards { grid-template-columns: 1fr; max-width: 680px; }
+  .home-page .cards .product-visual { height: 200px; flex-basis: 200px; }
+  .home-page .story-layout { grid-template-columns: 1fr; max-width: 680px; gap: 28px; }
+  .home-page .student-essentials { grid-template-columns: 1fr; margin: 0 24px; }
+  .home-page .student-photo { height: 220px; min-height: 220px; }
+  .home-page .student-copy { padding: 28px; }
+  .home-page .student-products { display: grid; grid-template-columns: 1fr 1fr; }
+  .home-page .steps { grid-template-columns: 1fr; max-width: 680px; }
+  .home-page footer { grid-template-columns: 1fr 1fr; }
+  .home-page .legal { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  body.home-page .hero { padding: 24px 18px 28px; }
+  .home-page .hero h1 { font-size: 37px; line-height: 1.08; margin: 18px 0 14px; }
+  .home-page .hero .lead { font-size: 16px; line-height: 1.55; margin-bottom: 18px; }
+  body.home-page .waitlist-panel { padding: 16px; }
+  .home-page .waitlist-benefit { font-size: 16px; }
+  .home-page .email-row { display: grid; }
+  .home-page .essentials, .home-page .how, .home-page .faq, .home-page .about { padding: 40px 18px; }
+  .home-page .student-essentials { margin: 0 18px; }
+  .home-page .student-copy { padding: 26px 22px; }
+  .home-page .student-photo { height: 180px; min-height: 180px; }
+  .home-page .student-copy h2 { font-size: 32px; }
+  .catalogue-standard { padding: 20px; }
+  .final-cta { padding: 40px 18px; }
+  .faq-list details { padding: 0 16px; }
+  .faq-list summary { font-size: 16px; }
+  .home-page footer { display: block; padding: 36px 20px; }
+  .home-page .copyright { margin: 0; }
+  .whatsapp-fab { right: max(16px,env(safe-area-inset-right)) !important; bottom: max(20px,env(safe-area-inset-bottom)) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
