@@ -100,7 +100,7 @@
     if (!footer.querySelector('.business-identity')) {
       const identity = document.createElement('span');
       identity.className = 'business-identity';
-      identity.textContent = 'Mediqit Healthcare Solutions · Ibadan, Nigeria';
+      identity.textContent = 'Mediqit Healthcare Solutions · CAC BN 9903204 · Ibadan, Nigeria';
       const copyright = footer.querySelector('.copyright');
       if (copyright) copyright.append(identity);
       else footer.append(identity);
