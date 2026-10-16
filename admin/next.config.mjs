@@ -1,2 +1,2 @@
-const nextConfig={poweredByHeader:false,outputFileTracingIncludes:{'/dashboard':['./secure/**/*'],'/responses':['./secure/responses.html']}};
+const nextConfig={poweredByHeader:false,outputFileTracingIncludes:{'/responses':['./secure/responses.html']}};
 export default nextConfig;

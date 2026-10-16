@@ -2,20 +2,24 @@
 
 Live: https://admin.mediqit.com
 
-The response workspace at `/responses` reads existing launch-list and student-survey records. It offers search, student-interest filtering, test-entry filtering, newest-first display and CSV export. Refresh reads current data; data is not pushed in real time. Export includes every matching response, including rows beyond the 500-row display limit.
+Private workspace for launch-list sign-ups and anonymous student questionnaire replies. Includes search, student-interest filtering, hidden-by-default test entries, newest-first display and formula-safe CSV exports. Student replies open in an accessible answer dialog. Mobile layouts use cards. Refresh reads current saved responses. Exports include all matching responses, including those beyond the 500 displayed-row limit.
 
-## Access and data flow
+## Build and deploy
 
-Clerk verifies the session. Every response page and response API request separately checks `ADMIN_EMAILS` against the signed-in user's verified emails. An unlisted signed-in user receives 403. An authenticated server-to-server bridge calls the main site's `/api/admin-responses`; private Blob credentials and record URLs never go to the browser. Both response APIs use private no-store headers. No record editing or deletion is exposed.
+This directory is the complete application source. No source objects from earlier Vercel deployments are needed. The retired sample operations dashboard redirects to `/responses` and is not included in the deployment.
 
-Configure `ADMIN_EMAILS` and `ADMIN_RESPONSES_SECRET` in the admin project, and the same `ADMIN_RESPONSES_SECRET` in the main site project. The existing Clerk keys and sign-in configuration remain in the admin project. Never put these secrets in source control.
+Install with `npm ci`, then `npm run build`. Deploy this folder, or use the repository with root directory `admin`, framework Next.js, build `npm run build`, and install `npm ci`.
 
-**Authentication follow-up:** the connected Clerk instance currently uses development keys. Set up a Clerk production instance, disable public registration, enforce MFA, migrate/invite the owners, and replace the Vercel integration's Clerk keys before relying on this as the permanent production authentication configuration. The server email allowlist is enforced independently of Clerk registration settings.
+Production project: `prj_TAZy78Cq12KfNFizL0pxjVHXeccl`; team: `cryptomonios-projects`.
 
-## Deployment
+## Configuration
 
-The original operations dashboard was deployed directly to Vercel rather than GitHub. `preserved-files.json` references the original source objects, preserving it unchanged except for a link to the new response workspace. These two referenced files are not checked into this directory. When deploying this folder using the Vercel deployment API, include these SHA references alongside all the local source files; otherwise `/dashboard` will lack its legacy HTML. The response workspace does not depend on those legacy files.
+Set `ADMIN_EMAILS` (comma-separated verified owner emails), `ADMIN_RESPONSES_SECRET`, `CLERK_SECRET_KEY`, `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in` and `NEXT_PUBLIC_APP_URL=https://admin.mediqit.com`. The main site's `/api/admin-responses` needs the same bridge secret. Never commit secret values.
 
-Original deployment (rollback): `dpl_3ooyGm2mohrgveP7TfyBwyHcLr5p`.
+Every response page and API request checks the server-side Clerk session and a verified email against `ADMIN_EMAILS`. Missing configuration fails closed. The main site reads private Blob records only after a constant-time server secret check. Neither record URLs nor storage credentials reach the browser. Personal-data responses are private, uncached and not indexed; CSV cells are escaped against spreadsheet formula execution. No editing/deletion API is exposed.
 
-Build: `npm ci && npm run build`. Keep the configured Clerk publishable key available during the build. Production project: `prj_TAZy78Cq12KfNFizL0pxjVHXeccl`.
+## Authentication rollout
+
+The currently connected Clerk instance has development keys. Production requires a production instance, domain verification, production keys, owner account setup and production sign-in testing. Do not hide the development warning as a substitute for completing this rollout. Public self-registration should be disabled and MFA configured in Clerk. The independent server allowlist still prevents unlisted or unverified accounts from reading responses.
+
+Tests: `npm test`. These verify staff access decisions, CSV escaping, original/updated survey formats and the rendered response interface using synthetic records. No tests bypass production authentication or use real respondent data.
