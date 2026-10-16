@@ -43,7 +43,7 @@ for(const tab of document.querySelectorAll('[role=tab]')){tab.addEventListener('
 for(const id of ['search','student-filter','include-test'])$(id).addEventListener(id==='search'?'input':'change',render);
 $('refresh').addEventListener('click',refresh);$('close-detail').addEventListener('click',()=>$('detail').close());$('detail').addEventListener('click',e=>{if(e.target===$('detail')){const r=$('detail').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('detail').close();}});
 $('export').addEventListener('click',()=>{const blob=new Blob([toCSV(filtered(),kind)],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`mediqit-${kind}-${new Date().toISOString().slice(0,10)}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-fetch('/api/session',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(s=>{if(s)$('admin-identity').textContent=`${s.displayName} · ${s.role==='owner'?'Owner':'Private'} workspace`;});
+fetch('/api/session',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(s=>{if(s){$('admin-identity').textContent=`${s.displayName} · ${s.role==='owner'?'Owner':'Private'} workspace`;$('workers-link').hidden=s.role!=='owner';}});
 window.addEventListener('pageshow',event=>{if(event.persisted)refresh();});
 window.addEventListener('pagehide',()=>{if($('detail').open)$('detail').close();$('detail-answers').replaceChildren();$('detail-title').textContent='Student response';$('detail-meta').textContent='';records={waitlist:[],students:[]};loaded=false;render();});
 refresh();
