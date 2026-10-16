@@ -8,10 +8,10 @@ export async function GET(request){
   const query=new URL(request.url).searchParams;
   const kind=query.get('kind');const cursor=query.get('cursor');
   if(!['waitlist','students'].includes(kind)|| (cursor && cursor.length>4096))return Response.json({error:'Invalid request.'},{status:400,headers});
-  const target=new URL('https://www.mediqit.com/api/admin-responses');
+  const target=new URL('https://mediqit.com/api/admin-responses');
   target.searchParams.set('kind',kind);if(cursor)target.searchParams.set('cursor',cursor);
   try{
-    const upstream=await fetch(target,{headers:{Authorization:`Bearer ${process.env.ADMIN_RESPONSES_SECRET}`},cache:'no-store',signal:AbortSignal.timeout(45000)});
+    const upstream=await fetch(target,{headers:{Authorization:`Bearer ${process.env.ADMIN_RESPONSES_SECRET}`},cache:'no-store',redirect:'error',signal:AbortSignal.timeout(45000)});
     if(!upstream.ok)throw Error('Read failed');
     return Response.json(await upstream.json(),{headers});
   }catch{return Response.json({error:'Unable to load responses. Please try again.'},{status:503,headers});}
