@@ -11,13 +11,13 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta
       name="description"
-      content="Contact Mediqit for launch, product, partnership and privacy enquiries."
+      content="Help shape Mediqit’s student equipment range with a short questionnaire."
     />
     <link rel="canonical" href="https://mediqit.com/students" />
-    <meta property="og:title" content="Contact Mediqit" />
+    <meta property="og:title" content="Mediqit student questionnaire" />
     <meta
       property="og:description"
-      content="Contact Mediqit or follow our official social profiles."
+      content="Tell us what equipment you need and the challenges you face."
     />
     <meta property="og:url" content="https://mediqit.com/students" />
     <meta property="og:type" content="website" />
@@ -41,7 +41,7 @@
     />
     <link rel="stylesheet" href="styles.css?v=20261016-maintenance1" />
     <link rel="stylesheet" href="page.css?v=20261012-pwa1" />
-  <link rel="stylesheet" href="/students.css"></head>
+  <link rel="stylesheet" href="/students.css?v=20261016-options2"></head>
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Mediqit home"
@@ -64,14 +64,39 @@
         >
       </nav>
     </header>
-<main class="info-page"><div class="survey-wrap"><p class="info-kicker">FOR MEDICAL STUDENTS</p><h1>Help us build the right student kits.</h1><p>Take 1–2 minutes to share what you need and the challenges you face. No email address is required. Please do not include personal health information.</p>
+<main class="info-page"><div class="survey-wrap"><p class="info-kicker">FOR MEDICAL STUDENTS</p><h1>Help us build the right student kits.</h1><p>Take 1–2 minutes to share what you need and the challenges you face. No email address is required. Please do not include names, contact details or personal health information. If you are under 18, ask your parent or guardian for permission before submitting.</p>
 <form id="student-survey" novalidate><p id="survey-progress" aria-live="polite">Question 1 of 5</p>
 <fieldset><legend>Which institution do you attend?</legend><input name="institution" aria-label="Institution" maxlength="180" required placeholder="Type your institution’s full name"></fieldset>
-<fieldset hidden><legend>What course are you studying?</legend><label class="survey-option"><input type="radio" name="course" value="Medicine and Surgery" required> Medicine and Surgery</label><label class="survey-option"><input type="radio" name="course" value="Nursing" required> Nursing</label><label class="survey-option"><input type="radio" name="course" value="Physiology" required> Physiology</label><label class="survey-option"><input type="radio" name="course" value="Anatomy" required> Anatomy</label><label class="survey-option"><input type="radio" name="course" value="Physiotherapy" required> Physiotherapy</label><label class="survey-option"><input type="radio" name="course" value="Medical Laboratory Science" required> Medical Laboratory Science</label><label class="survey-option"><input type="radio" name="course" value="Radiography" required> Radiography</label><label class="survey-option"><input type="radio" name="course" value="Pharmacy" required> Pharmacy</label><label class="survey-option"><input type="radio" name="course" value="Dentistry" required> Dentistry</label><label class="survey-option"><input type="radio" name="course" value="Other" required> Other</label><label>Other course (specify)<input name="otherCourse" maxlength="120"></label></fieldset>
-<fieldset hidden><legend>Which equipment or supplies do you need for your studies?</legend><p>For example: stethoscope, manual BP set, examination tools or a clinical starter kit.</p><textarea name="equipment" required maxlength="1000" rows="4"></textarea></fieldset>
-<fieldset hidden><legend>What is your biggest difficulty finding the right equipment?</legend><p>Tell us what has made the search difficult, or write “None”.</p><textarea name="findingChallenge" required maxlength="1000" rows="4"></textarea></fieldset>
-<fieldset hidden><legend>What is your biggest difficulty buying the equipment you need?</legend><p>For example: cost, quality, availability or delivery. Write “None” if you have no difficulty.</p><textarea name="buyingChallenge" required maxlength="1000" rows="4"></textarea><p>By submitting, you agree that Mediqit may use these answers to plan its student range, as explained in our <a href="/privacy#student-survey">privacy notice</a>. This does not subscribe you to marketing emails.</p><label><input type="checkbox" name="surveyConsent" required> I am 18 or older and agree to submit my responses.</label></fieldset>
-<p id="survey-error" role="alert"></p><div class="survey-actions"><button type="button" id="survey-back" hidden>Back</button><button type="submit" id="survey-next">Next →</button></div></form><noscript>Please enable JavaScript to complete this questionnaire.</noscript></div></main>    <footer class="info-footer">
+<fieldset hidden><legend>What course are you studying?</legend><label class="survey-option"><input type="radio" name="course" value="Medicine and Surgery" required> Medicine and Surgery</label><label class="survey-option"><input type="radio" name="course" value="Nursing" required> Nursing</label><label class="survey-option"><input type="radio" name="course" value="Physiology" required> Physiology</label><label class="survey-option"><input type="radio" name="course" value="Anatomy" required> Anatomy</label><label class="survey-option"><input type="radio" name="course" value="Physiotherapy" required> Physiotherapy</label><label class="survey-option"><input type="radio" name="course" value="Medical Laboratory Science" required> Medical Laboratory Science</label><label class="survey-option"><input type="radio" name="course" value="Radiography" required> Radiography</label><label class="survey-option"><input type="radio" name="course" value="Pharmacy" required> Pharmacy</label><label class="survey-option"><input type="radio" name="course" value="Dentistry" required> Dentistry</label><label class="survey-option"><input type="radio" name="course" value="Other" required> Other</label><label data-other-course hidden>Other course (specify)<input name="otherCourse" maxlength="120"></label></fieldset>
+<fieldset hidden data-multiple="equipment"><legend>Which equipment or supplies would you consider getting?</legend><p>Select all that apply.</p><label class="survey-option"><input type="checkbox" name="equipment" value="Stethoscope"> Stethoscope</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Manual blood-pressure set"> Manual blood-pressure set</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Digital blood-pressure monitor"> Digital blood-pressure monitor</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Thermometer"> Thermometer</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Pulse oximeter"> Pulse oximeter</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Pen torch"> Pen torch</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Examination tools"> Examination tools</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Lab coat or scrubs"> Lab coat or scrubs</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Gloves and other consumables"> Gloves and other consumables</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Complete clinical starter kit"> Complete clinical starter kit</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Not sure yet"> Not sure yet</label>
+<label class="survey-option"><input type="checkbox" name="equipment" value="Other"> Other</label><label data-other-for="equipment" hidden>Other (please specify)<textarea name="equipmentOther" maxlength="500" rows="3"></textarea></label></fieldset>
+<fieldset hidden data-multiple="findingChallenge"><legend>What challenges do you face finding the right equipment?</legend><p>Select all that apply.</p><label class="survey-option"><input type="checkbox" name="findingChallenge" value="Unsure which equipment my department requires"> Unsure which equipment my department requires</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Difficult to find the correct brand or model"> Difficult to find the correct brand or model</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Unsure which sellers or products to trust"> Unsure which sellers or products to trust</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Not enough product specifications"> Not enough product specifications</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Items are unavailable nearby"> Items are unavailable nearby</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Difficult to compare products"> Difficult to compare products</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="None"> None</label>
+<label class="survey-option"><input type="checkbox" name="findingChallenge" value="Other"> Other</label><label data-other-for="findingChallenge" hidden>Other (please specify)<textarea name="findingChallengeOther" maxlength="500" rows="3"></textarea></label></fieldset>
+<fieldset hidden data-multiple="buyingChallenge"><legend>What challenges do you face buying the equipment you need?</legend><p>Select all that apply.</p><label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Prices are too high"> Prices are too high</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Delivery costs are too high"> Delivery costs are too high</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Delivery takes too long"> Delivery takes too long</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Items are out of stock"> Items are out of stock</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Worried about counterfeit or poor-quality items"> Worried about counterfeit or poor-quality items</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Unclear warranty or return terms"> Unclear warranty or return terms</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Cannot get all required items from one seller"> Cannot get all required items from one seller</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="None"> None</label>
+<label class="survey-option"><input type="checkbox" name="buyingChallenge" value="Other"> Other</label><label data-other-for="buyingChallenge" hidden>Other (please specify)<textarea name="buyingChallengeOther" maxlength="500" rows="3"></textarea></label><p>Your responses help us plan our student range. No email subscription is created. Read our <a href="/privacy#student-survey">privacy notice</a>.</p><label><input type="checkbox" name="surveyConsent" required> I agree to submit my responses. If I am under 18, I have my parent’s or guardian’s permission.</label></fieldset><p id="survey-error" role="alert"></p><div class="survey-actions"><button type="button" id="survey-back" hidden>Back</button><button type="submit" id="survey-next">Next →</button></div></form><noscript>Please enable JavaScript to complete this questionnaire.</noscript></div></main>    <footer class="info-footer">
       <div>
         <a class="brand inverse" href="/"
           ><img src="/assets/mediqit-wordmark-small.webp" alt="Mediqit" width="435" height="145" decoding="async" /></a
@@ -98,7 +123,7 @@
       aria-label="Chat with Mediqit on WhatsApp"
       ><svg aria-hidden="true" viewBox="0 0 32 32" width="24" height="24" focusable="false"><path fill="currentColor" d="M16.04 3.2A12.73 12.73 0 0 0 5.02 22.3L3.2 28.8l6.66-1.75a12.73 12.73 0 1 0 6.18-23.85Zm0 23.3a10.55 10.55 0 0 1-5.38-1.47l-.39-.23-3.95 1.04 1.06-3.85-.25-.4a10.55 10.55 0 1 1 8.95 4.91Zm5.79-7.9c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.58a9.54 9.54 0 0 1-1.76-2.19c-.18-.32-.02-.49.14-.65.14-.14.32-.37.47-.55.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.25-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.29 3.27c.16.21 2.24 3.42 5.42 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.5-.08-.14-.29-.22-.61-.38Z" /></svg><span class="sr-only">WhatsApp</span></a
     >
-    <script src="students.js"></script>
+    <script src="students.js?v=20261016-options2"></script>
     <script src="script.js?v=20261016-maintenance1"></script>
     <script src="pwa.js?v=20261012-pwa1"></script>
     <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>

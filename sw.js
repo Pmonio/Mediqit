@@ -1,4 +1,4 @@
-const CACHE_NAME = "mediqit-pwa-v15";
+const CACHE_NAME = "mediqit-pwa-v16";
 const PRECACHE = [
   "/",
   "/what-we-are-building",
