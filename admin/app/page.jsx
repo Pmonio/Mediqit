@@ -1,2 +1,1 @@
-import { redirect } from 'next/navigation';
-export default function Home(){redirect('/responses');}
+import {redirect} from 'next/navigation';import {getValidAdminSession} from '../lib/session';import {firstDashboardPath} from '../lib/access';export const dynamic='force-dynamic';export default async function Home(){const session=await getValidAdminSession();redirect(session?firstDashboardPath(session):'/sign-in')}

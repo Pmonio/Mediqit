@@ -21,3 +21,7 @@ Owner sessions can read all responses and manage worker access at `/workers`. Wo
 The main site's `/api/admin-responses` needs the same bridge secret. Neither record URLs nor storage credentials reach the browser. Personal-data responses are private, uncached and not indexed; CSV cells are escaped against spreadsheet formula execution. No public registration, Google sign-in, editing or deletion API is exposed.
 
 Tests: `npm test`. Build: `npm run build`.
+
+## Admin modules and permissions
+
+The unified admin includes Overview, Marketing, Customer Research, Content, Roadmap & Ideas, Finance, Workers & Access and an owner-only Audit Log. Marketing, content, roadmap and finance records persist in the private Blob store. Worker creation requires at least one dashboard permission. The owner can change permissions later; permission changes increment the credential version and immediately revoke existing sessions. The UI hides unavailable modules and every page and API enforces the same permission server-side. Workers & Access and the complete Audit Log are never assignable to workers.

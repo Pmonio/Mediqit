@@ -1,0 +1,3 @@
+import {notFound,redirect} from 'next/navigation';import {getValidAdminSession} from '../../lib/session';import {canAccess} from '../../lib/access';import AdminShell from '../../components/AdminShell';import WorkspaceClient from './workspace-client';
+export const dynamic='force-dynamic';const allowed=['overview','marketing','content','roadmap','finance','audit'];
+export default async function ModulePage({params}){const{module}=await params;if(!allowed.includes(module))notFound();const session=await getValidAdminSession();if(!session)redirect('/sign-in');if(module==='audit'?session.role!=='owner':!canAccess(session,module))redirect('/responses');return <AdminShell session={session} active={module}><WorkspaceClient module={module}/></AdminShell>}

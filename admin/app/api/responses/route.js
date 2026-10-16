@@ -1,9 +1,9 @@
-import {getValidAdminSession} from '../../../lib/session';import {filterForWorkspace} from '../../../lib/accounts';
+import {getValidAdminSession} from '../../../lib/session';import {filterForWorkspace} from '../../../lib/accounts';import {canAccess} from '../../../lib/access';
 export const runtime='nodejs';
 export const dynamic='force-dynamic';
 const headers={'Cache-Control':'private, no-store, max-age=0','X-Robots-Tag':'noindex, nofollow','Vary':'Cookie'};
 export async function GET(request){
-  const session=await getValidAdminSession();if(!session?.authenticated)return Response.json({error:'Unauthorised.'},{status:401,headers});
+  const session=await getValidAdminSession();if(!session?.authenticated)return Response.json({error:'Unauthorised.'},{status:401,headers});if(!canAccess(session,'research'))return Response.json({error:'Access denied.'},{status:403,headers});
   if(!process.env.ADMIN_RESPONSES_SECRET)return Response.json({error:'Responses are not configured.'},{status:503,headers});
   const query=new URL(request.url).searchParams;
   const kind=query.get('kind');const cursor=query.get('cursor');

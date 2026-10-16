@@ -1,2 +1,1 @@
-// Retain bookmarked links without serving the retired sample operations dashboard.
-export function GET(request){return Response.redirect(new URL('/responses',request.url),307);}
+import {getValidAdminSession} from '../../lib/session';import {firstDashboardPath} from '../../lib/access';export async function GET(request){const session=await getValidAdminSession();return Response.redirect(new URL(session?firstDashboardPath(session):'/sign-in',request.url),307)}

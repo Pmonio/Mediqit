@@ -1,0 +1,2 @@
+import {redirect} from 'next/navigation';import {getValidAdminSession} from '../../lib/session';
+export const dynamic='force-dynamic';export default async function NoAccess(){const session=await getValidAdminSession();if(!session)redirect('/sign-in');return <main className="auth-shell"><img className="brand-mark" src="/assets/mediqit-wordmark-small.webp" alt="Mediqit"/><h1>No dashboard assigned</h1><p>Ask the owner to assign at least one dashboard to your account.</p><form action="/api/logout" method="post"><button>Sign out</button></form></main>}
