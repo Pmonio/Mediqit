@@ -1,3 +1,4 @@
+import { syncResponse } from '../lib/google-sheet-sync.js';
 import { put } from '@vercel/blob';
 import { randomUUID } from 'node:crypto';
 
@@ -7,7 +8,7 @@ const attempts = new Map();
 
 // Instance-local defence in depth, not a distributed quota. A platform-level
 // rate limit should be configured before opening signup to paid traffic.
-export function createSurveyHandler({ save = put, now = Date.now, limits = attempts } = {}) {
+export function createSurveyHandler({ save = put, now = Date.now, limits = attempts, sync = syncResponse } = {}) {
   return async function handler(request, response) {
     response.setHeader('Cache-Control', 'no-store');
     if (request.method !== 'POST') {
@@ -57,7 +58,8 @@ export function createSurveyHandler({ save = put, now = Date.now, limits = attem
     record.consentedAt = new Date(time).toISOString();
     record.consentVersion = "2026-10-16-options2";
     record.surveyVersion = 2;
-    try{await save(`student-surveys/${randomUUID()}.json`,JSON.stringify(record),{access:"private",addRandomSuffix:false,allowOverwrite:false,contentType:"application/json"});return response.status(200).json({ok:true});}
+    const pathname = `student-surveys/${randomUUID()}.json`;
+    try{await save(pathname,JSON.stringify(record),{access:"private",addRandomSuffix:false,allowOverwrite:false,contentType:"application/json"});try { const result = await sync('survey', pathname, record); if (result.status === 'failed') console.error('Google Sheets sync pending'); } catch { console.error('Google Sheets sync pending'); } return response.status(200).json({ok:true});}
     catch{console.error("Student survey persistence failed");return response.status(503).json({error:"We couldn’t save your response. Please try again shortly."});}
   };
 }
