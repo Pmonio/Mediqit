@@ -25,3 +25,7 @@ Tests: `npm test`. Build: `npm run build`.
 ## Admin modules and permissions
 
 The unified admin includes Overview, Marketing, Customer Research, Content, Roadmap & Ideas, Finance, Workers & Access and an owner-only Audit Log. Marketing, content, roadmap and finance records persist in the private Blob store. Worker creation requires at least one dashboard permission. The owner can change permissions later; permission changes increment the credential version and immediately revoke existing sessions. The UI hides unavailable modules and every page and API enforces the same permission server-side. Workers & Access and the complete Audit Log are never assignable to workers.
+
+## Owner recovery
+
+The owner-only Security page supports current-code changes and eight one-time offline recovery codes. Changing or recovering the owner code increments the credential version, invalidating all active owner sessions. `/forgot-code` supports a generic-response, rate-limited 15-minute email recovery flow through Brevo when `BREVO_API_KEY` is configured; it uses the first address in `ADMIN_EMAILS` and the verified `BREVO_SENDER_EMAIL`. Recovery tokens and codes are stored only as hashes. Sensitive recovery actions are written to the audit log without recording any secret.
