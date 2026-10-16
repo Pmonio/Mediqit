@@ -10,5 +10,6 @@ export async function POST(request){if(!hasTrustedOrigin(request))return Respons
  const index=accounts.findIndex(a=>a.role==='staff'&&a.username===String(body.username||'').trim().toLowerCase());if(index<0)return Response.json({error:'Worker not found.'},{status:404,headers});
  if(body.action==='refresh'){const refreshed=refreshWorker(accounts[index]);accounts[index]=refreshed.account;await saveAccounts(accounts);return Response.json({worker:publicAccounts([refreshed.account])[0],code:refreshed.code},{headers})}
  if(body.action==='toggle'){accounts[index]={...accounts[index],active:!accounts[index].active,credentialVersion:(accounts[index].credentialVersion||1)+1,updatedAt:new Date().toISOString()};await saveAccounts(accounts);return Response.json({worker:publicAccounts([accounts[index]])[0]},{headers})}
+ if(body.action==='delete'){accounts.splice(index,1);await saveAccounts(accounts);return Response.json({deleted:true},{headers})}
  return Response.json({error:'Invalid action.'},{status:400,headers});
  }catch(error){return Response.json({error:error?.message||'Unable to update worker.'},{status:400,headers})}}
