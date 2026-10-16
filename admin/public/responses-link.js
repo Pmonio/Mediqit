@@ -1,0 +1,1 @@
+const link=document.createElement('a');link.href='/responses';link.textContent='Launch list & student responses';Object.assign(link.style,{position:'fixed',bottom:'22px',right:'22px',background:'#123c69',color:'#fff',padding:'14px 20px',borderRadius:'12px',zIndex:9999,font:'600 14px Arial',textDecoration:'none',boxShadow:'0 6px 24px #0003'});document.body.append(link);
