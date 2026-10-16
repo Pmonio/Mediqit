@@ -1,48 +1,12 @@
+// Analytics failures must never change the result of a successful signup.
+function track(...args) { try { window.va?.(...args); } catch {} }
 const forms = [...document.querySelectorAll(".waitlist-form")];
-document.querySelectorAll(".brand").forEach((brand) => {
-  const image = document.createElement("img");
-  image.src = "assets/mediqit-wordmark-v1.png";
-  image.alt = "Mediqit";
-  Object.assign(image.style, {
-    display: "block",
-    width: "145px",
-    height: "auto",
-  });
-  brand.replaceChildren(image);
-  if (brand.classList.contains("inverse"))
-    Object.assign(brand.style, {
-      background: "#fff",
-      padding: "7px 10px",
-      borderRadius: "9px",
-      width: "fit-content",
-    });
-});
-document
-  .querySelector('link[rel="icon"]')
-  ?.setAttribute("href", "assets/mediqit-q.svg");
-const categoryImages = [
-  [".product-visual.monitor", "assets/bp-monitor-v1.webp"],
-  [".product-visual.first-aid", "assets/first-aid-kit-v1.webp"],
-  [".product-visual.caregiver", "assets/family-care-v1.webp"],
-];
-categoryImages.forEach(([selector, source]) => {
-  const visual = document.querySelector(selector);
-  if (!visual) return;
-  Object.assign(visual.style, {
-    backgroundImage: `url('${source}')`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  });
-  visual
-    .querySelectorAll(":scope > *")
-    .forEach((child) => (child.style.display = "none"));
-});
 document.querySelectorAll("[data-analytics]").forEach((link) =>
   link.addEventListener("click", () => {
     const label = link.dataset.analytics;
     const whatsapp = label.startsWith("whatsapp_");
     const social = label.startsWith("social_");
-    window.va?.("event", {
+    track("event", {
       name: whatsapp
         ? "whatsapp_clicked"
         : social
@@ -54,7 +18,7 @@ document.querySelectorAll("[data-analytics]").forEach((link) =>
 );
 document.querySelectorAll('a[href="#waitlist"]').forEach((link) =>
   link.addEventListener("click", () =>
-    window.va?.("event", {
+    track("event", {
       name: "launch_cta_clicked",
       data: { location: link.closest("header") ? "header" : "page" },
     }),
@@ -143,12 +107,12 @@ forms.forEach((form) => form.addEventListener("submit", async (event) => {
         company: data.get("company"),
       }),
     });
-    const result = await response.json();
-    if (!response.ok)
-      throw new Error(
-        result.error || "We could not add you right now. Please try again.",
-      );
-    window.va?.("event", {
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.ok !== true) {
+      const messages = {400: "Check your email and launch-email consent, then try again.", 429: "Too many attempts. Please wait a minute and try again."};
+      throw new Error(messages[response.status] || "We couldn’t save your signup. Please try again shortly.");
+    }
+    track("event", {
       name: "waitlist_joined",
       data: { productUpdates: data.get("updatesConsent") === "on" },
     });
@@ -162,8 +126,8 @@ forms.forEach((form) => form.addEventListener("submit", async (event) => {
       }
     });
   } catch (error) {
-    window.va?.("event", { name: "waitlist_error" });
-    errorMessage.textContent = error.message;
+    track("event", { name: "waitlist_error" });
+    errorMessage.textContent = error instanceof TypeError ? "You appear to be offline. Check your connection and try again." : error.message;
     errorMessage.classList.add("show");
   } finally {
     submitting = false;
