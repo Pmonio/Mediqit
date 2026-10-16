@@ -14,6 +14,9 @@
     }
   ],
   "functions": {
+    "api/ads-config.js": {
+      "maxDuration": 10
+    },
     "api/waitlist.js": {
       "maxDuration": 10
     }

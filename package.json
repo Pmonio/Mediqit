@@ -7,6 +7,6 @@
     "@vercel/blob": "^2.3.0"
   },
   "scripts": {
-    "test": "node tests/waitlist.test.mjs"
+    "test": "node --test tests/*.test.mjs"
   }
 }
