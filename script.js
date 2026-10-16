@@ -116,6 +116,9 @@ forms.forEach((form) => form.addEventListener("submit", async (event) => {
       name: "waitlist_joined",
       data: { productUpdates: data.get("updatesConsent") === "on" },
     });
+    // Store only the display preference, never an email address.
+    try { sessionStorage.setItem("mediqit-signup", JSON.stringify({ studentInterest: data.get("studentInterest") === "on" })); } catch {}
+    window.location.assign("/thank-you");
     forms.forEach((other) => {
       other.reset();
       other.querySelector(".form-error").classList.remove("show");
