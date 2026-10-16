@@ -1,6 +1,5 @@
-const CACHE_NAME = "mediqit-pwa-v13";
+const CACHE_NAME = "mediqit-pwa-v14";
 const PRECACHE = [
-  "/",
   "/",
   "/what-we-are-building",
   "/contact",
@@ -10,15 +9,13 @@ const PRECACHE = [
   "/glucometers",
   "/thermometers",
   "/offline.html",
-  "/styles.css?v=20261012-pwa10",
-  "/refinements.css?v=20261013-home1",
-  "/homepage.css?v=20261013-home1",
+  "/styles.css?v=20261016-maintenance1",
   "/page.css?v=20261012-pwa1",
   "/category.css?v=20261012-seo1",
   "/privacy.css?v=20261012-pwa1",
-  "/script.js?v=20261013-home1",
+  "/script.js?v=20261016-maintenance1",
   "/pwa.js?v=20261012-pwa1",
-  "/assets/mediqit-wordmark-v1.png",
+  "/assets/mediqit-wordmark-small.webp",
   "/assets/mediqit-app-192.png",
   "/assets/mediqit-app-512.png",
   "/assets/family-hero-v3.webp",
@@ -30,9 +27,9 @@ const PRECACHE = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE)),
+    caches.open(CACHE_NAME).then((cache) => cache.addAll([...new Set(PRECACHE)])).then(() => self.skipWaiting()),
   );
-  self.skipWaiting();
+
 });
 
 self.addEventListener("activate", (event) => {
@@ -42,12 +39,11 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => key !== CACHE_NAME)
+            .filter((key) => key.startsWith("mediqit-pwa-") && key !== CACHE_NAME)
             .map((key) => caches.delete(key)),
         ),
-      ),
+      ).then(() => self.clients.claim()),
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
@@ -62,8 +58,10 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          if (response.ok) {
+            const copy = response.clone();
+            event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {}));
+          }
           return response;
         })
         .catch(
@@ -81,7 +79,7 @@ self.addEventListener("fetch", (event) => {
         fetch(request).then((response) => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+            event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {}));
           }
           return response;
         }),
