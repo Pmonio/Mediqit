@@ -1,0 +1,1 @@
+export function hasTrustedOrigin(request){const origin=request.headers.get('origin'),expected=process.env.NEXT_PUBLIC_APP_URL||'https://admin.mediqit.com';return origin===expected||(process.env.NODE_ENV!=='production'&&/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin||''))}

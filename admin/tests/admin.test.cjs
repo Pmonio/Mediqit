@@ -29,12 +29,12 @@ test('CSV formulas and control prefixes are neutralised',async()=>{
  for(const value of ['=1+1',' \t+cmd','@SUM(A1)','-cmd','\r=cmd'])assert.ok(u.csvCell(value).startsWith('"\''));
  assert.equal(u.csvCell('a"b'),'"a""b"');assert.equal(u.csvCell('ordinary'),'"ordinary"');
 });
-test('staff access fails closed for signed-out, unlisted and unverified accounts',async()=>{
- let source=read('lib/staff.js').replace("import { auth, currentUser } from '@clerk/nextjs/server';",'const auth=async()=>globalThis.testSession;const currentUser=async()=>globalThis.testUser;');
- const {isStaff}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
- const previous=process.env.ADMIN_EMAILS;
- try{process.env.ADMIN_EMAILS='owner@example.org';globalThis.testSession={userId:null};assert.equal(await isStaff(),false);globalThis.testSession={userId:'test'};
- for(const [email,status,allowed]of [['other@example.org','verified',false],['owner@example.org','unverified',false],['OWNER@example.org','verified',true]]){globalThis.testUser={emailAddresses:[{emailAddress:email,verification:{status}}]};assert.equal(await isStaff(),allowed);}
- process.env.ADMIN_EMAILS='';assert.equal(await isStaff(),false);
- }finally{if(previous===undefined)delete process.env.ADMIN_EMAILS;else process.env.ADMIN_EMAILS=previous;delete globalThis.testSession;delete globalThis.testUser;}
+test('personal codes are bound to one username and workspaces stay isolated',async()=>{
+ const source=read('lib/accounts.js').replace("import { scryptSync, timingSafeEqual } from 'node:crypto';","const {scryptSync,timingSafeEqual}=await import('node:crypto');");
+ const {scryptSync,randomBytes}=require('node:crypto'),saltA=randomBytes(16).toString('hex'),saltB=randomBytes(16).toString('hex'),hash=(code,salt)=>scryptSync(code,salt,64).toString('hex');
+ const raw=JSON.stringify([{username:'admin-a',salt:saltA,codeHash:hash('code-a',saltA),role:'staff',workspaceId:'workspace-a'},{username:'admin-b',salt:saltB,codeHash:hash('code-b',saltB),role:'staff',workspaceId:'workspace-b'},{username:'owner',salt:saltA,codeHash:hash('owner-code',saltA),role:'owner',workspaceId:'owner'}]);
+ const mod=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+ assert.equal(mod.verifyCredentials('admin-b','code-a',raw),null);assert.equal(mod.verifyCredentials('ADMIN-A','code-a',raw).workspaceId,'workspace-a');
+ const rows=[{id:'one'},{id:'two'},{id:'three'}],assignments=JSON.stringify({waitlist:{one:'workspace-a',two:'workspace-b'}});
+ assert.deepEqual(mod.filterForWorkspace(rows,{role:'staff',workspaceId:'workspace-a'},'waitlist',assignments),[{id:'one'}]);assert.deepEqual(mod.filterForWorkspace(rows,{role:'owner',workspaceId:'owner'},'waitlist',assignments),rows);
 });

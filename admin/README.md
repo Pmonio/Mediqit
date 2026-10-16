@@ -14,12 +14,10 @@ Production project: `prj_TAZy78Cq12KfNFizL0pxjVHXeccl`; team: `cryptomonios-proj
 
 ## Configuration
 
-Set `ADMIN_EMAILS` (comma-separated verified owner emails), `ADMIN_RESPONSES_SECRET`, `CLERK_SECRET_KEY`, `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in` and `NEXT_PUBLIC_APP_URL=https://admin.mediqit.com`. The main site's `/api/admin-responses` needs the same bridge secret. Never commit secret values.
+Set `ADMIN_ACCOUNTS_JSON`, `ADMIN_SESSION_SECRET`, `ADMIN_RESPONSES_SECRET`, `ADMIN_RESPONSE_ASSIGNMENTS={}` and `NEXT_PUBLIC_APP_URL=https://admin.mediqit.com`. Account records contain a lowercase username, display name, scrypt salt and hash, role (`owner` or `staff`) and a unique workspace ID. Plaintext special codes are never stored in the application or repository.
 
-Every response page and API request checks the server-side Clerk session and a verified email against `ADMIN_EMAILS`. Missing configuration fails closed. The main site reads private Blob records only after a constant-time server secret check. Neither record URLs nor storage credentials reach the browser. Personal-data responses are private, uncached and not indexed; CSV cells are escaped against spreadsheet formula execution. No editing/deletion API is exposed.
+Owner sessions can read all responses. Staff sessions receive only records explicitly assigned to their workspace in `ADMIN_RESPONSE_ASSIGNMENTS`; new staff workspaces therefore start empty. Every protected page and API route checks the encrypted, HTTP-only session cookie on the server. Login attempts use generic errors, a delay and temporary rate limiting. Cross-site login and logout posts are rejected.
 
-## Authentication rollout
+The main site's `/api/admin-responses` needs the same bridge secret. Neither record URLs nor storage credentials reach the browser. Personal-data responses are private, uncached and not indexed; CSV cells are escaped against spreadsheet formula execution. No public registration, Google sign-in, editing or deletion API is exposed.
 
-The currently connected Clerk instance has development keys. Production requires a production instance, domain verification, production keys, owner account setup and production sign-in testing. Do not hide the development warning as a substitute for completing this rollout. Public self-registration should be disabled and MFA configured in Clerk. The independent server allowlist still prevents unlisted or unverified accounts from reading responses.
-
-Tests: `npm test`. These verify staff access decisions, CSV escaping, original/updated survey formats and the rendered response interface using synthetic records. No tests bypass production authentication or use real respondent data.
+Tests: `npm test`. Build: `npm run build`.
