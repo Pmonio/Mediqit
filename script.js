@@ -108,6 +108,16 @@ forms.forEach((form) => form.addEventListener("submit", async (event) => {
       }),
     });
     const result = await response.json().catch(() => ({}));
+    if (response.status === 409 && result.status === "already_joined") {
+      forms.forEach((other) => {
+        const message = other.querySelector(".form-success");
+        if (message) {
+          message.hidden = false;
+          message.textContent = "You have already joined the launch list. Stay tuned for more information.";
+        }
+      });
+      return;
+    }
     if (!response.ok || result.ok !== true) {
       const messages = {400: "Check your email and launch-email consent, then try again.", 429: "Too many attempts. Please wait a minute and try again."};
       throw new Error(messages[response.status] || "We couldn’t save your signup. Please try again shortly.");

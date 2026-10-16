@@ -1,5 +1,5 @@
-import { put } from '@vercel/blob';
-import { createHash, randomUUID } from 'node:crypto';
+import { put, head } from '@vercel/blob';
+import { createHash } from 'node:crypto';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WINDOW_MS = 60_000;
@@ -7,7 +7,7 @@ const attempts = new Map();
 
 // Instance-local defence in depth, not a distributed quota. A platform-level
 // rate limit should be configured before opening signup to paid traffic.
-export function createWaitlistHandler({ save = put, now = Date.now, limits = attempts } = {}) {
+export function createWaitlistHandler({ save = put, lookup = head, now = Date.now, limits = attempts } = {}) {
   return async function handler(request, response) {
     response.setHeader('Cache-Control', 'no-store');
     if (request.method !== 'POST') {
@@ -47,16 +47,20 @@ export function createWaitlistHandler({ save = put, now = Date.now, limits = att
     const record = { email: normalized, launchConsent: true, updatesConsent, studentInterest,
       consentedAt: new Date(time).toISOString(), consentVersion: '2026-10-12' };
     const options = { access: 'private', addRandomSuffix: false, contentType: 'application/json' };
+    // Create once at a normalized email key. Storage rejects simultaneous duplicates.
+    const pathname = `waitlist/${id}.json`;
     try {
-      // Keep evidence of each submission outside waitlist/ so existing exports
-      // still see one summary per subscriber. A retry cannot erase prior consent.
-      await save(`waitlist-consents/${id}/${randomUUID()}.json`, JSON.stringify(record), { ...options, allowOverwrite: false });
-      await save(`waitlist/${id}.json`, JSON.stringify(record), { ...options, allowOverwrite: true });
-      return response.status(200).json({ ok: true });
+      await save(pathname, JSON.stringify(record), { ...options, allowOverwrite: false });
+      return response.status(200).json({ ok: true, status: 'joined' });
     } catch {
-      // Do not expose email addresses, provider responses or credentials in logs.
-      console.error('Waitlist persistence failed');
-      return response.status(503).json({ error: 'We couldn’t save your signup. Please try again shortly.' });
+      // An existing record proves this address is already subscribed. Never overwrite it.
+      try {
+        await lookup(pathname);
+        return response.status(409).json({ ok: false, status: 'already_joined', message: 'You have already joined the launch list. Stay tuned for more information.' });
+      } catch {
+        console.error('Waitlist persistence failed');
+        return response.status(503).json({ error: 'We couldn’t save your signup. Please try again shortly.' });
+      }
     }
   };
 }
