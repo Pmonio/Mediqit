@@ -5,9 +5,30 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WINDOW_MS = 60_000;
 const attempts = new Map();
 
+export async function syncBrevoContact(record, {
+  apiKey = process.env.BREVO_API_KEY,
+  listId = process.env.BREVO_WAITLIST_LIST_ID,
+  request = fetch,
+} = {}) {
+  if (!apiKey || !listId || !/^\d+$/.test(String(listId))) {
+    throw new Error('Brevo waitlist integration is not configured.');
+  }
+  const result = await request('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: { 'api-key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      email: record.email,
+      listIds: [Number(listId)],
+      updateEnabled: true,
+    }),
+    signal: AbortSignal.timeout(8_000),
+  });
+  if (!result.ok) throw new Error(`Brevo contact sync failed (${result.status}).`);
+}
+
 // Instance-local defence in depth, not a distributed quota. A platform-level
 // rate limit should be configured before opening signup to paid traffic.
-export function createWaitlistHandler({ save = put, lookup = head, now = Date.now, limits = attempts } = {}) {
+export function createWaitlistHandler({ save = put, lookup = head, syncContact = syncBrevoContact, now = Date.now, limits = attempts } = {}) {
   return async function handler(request, response) {
     response.setHeader('Cache-Control', 'no-store');
     if (request.method !== 'POST') {
@@ -50,15 +71,18 @@ export function createWaitlistHandler({ save = put, lookup = head, now = Date.no
     // Create once at a normalized email key. Storage rejects simultaneous duplicates.
     const pathname = `waitlist/${id}.json`;
     try {
+      // Sync first so an unavailable email provider cannot leave a successful
+      // signup stranded only in storage. Brevo's updateEnabled makes retries safe.
+      await syncContact(record);
       await save(pathname, JSON.stringify(record), { ...options, allowOverwrite: false });
       return response.status(200).json({ ok: true, status: 'joined' });
-    } catch {
+    } catch (error) {
       // An existing record proves this address is already subscribed. Never overwrite it.
       try {
         await lookup(pathname);
         return response.status(409).json({ ok: false, status: 'already_joined', message: 'You have already joined the launch list. Stay tuned for more information.' });
       } catch {
-        console.error('Waitlist persistence failed');
+        console.error('Waitlist signup failed', error instanceof Error ? error.message : 'unknown error');
         return response.status(503).json({ error: 'We couldn’t save your signup. Please try again shortly.' });
       }
     }
