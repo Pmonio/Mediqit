@@ -1,3 +1,4 @@
+import { syncResponse } from '../lib/google-sheet-sync.js';
 import { put, head } from '@vercel/blob';
 import { createHash } from 'node:crypto';
 
@@ -7,7 +8,7 @@ const attempts = new Map();
 
 // Instance-local defence in depth, not a distributed quota. A platform-level
 // rate limit should be configured before opening signup to paid traffic.
-export function createWaitlistHandler({ save = put, lookup = head, now = Date.now, limits = attempts } = {}) {
+export function createWaitlistHandler({ save = put, lookup = head, now = Date.now, limits = attempts, sync = syncResponse } = {}) {
   return async function handler(request, response) {
     response.setHeader('Cache-Control', 'no-store');
     if (request.method !== 'POST') {
@@ -51,6 +52,8 @@ export function createWaitlistHandler({ save = put, lookup = head, now = Date.no
     const pathname = `waitlist/${id}.json`;
     try {
       await save(pathname, JSON.stringify(record), { ...options, allowOverwrite: false });
+      // Private storage is authoritative; a Sheets outage must not lose the signup.
+      try { const result = await sync('launch', pathname, record); if (result.status === 'failed') console.error('Google Sheets sync pending'); } catch { console.error('Google Sheets sync pending'); }
       return response.status(200).json({ ok: true, status: 'joined' });
     } catch {
       // An existing record proves this address is already subscribed. Never overwrite it.
