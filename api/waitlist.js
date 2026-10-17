@@ -6,7 +6,7 @@ const WINDOW_MS = 60_000;
 const attempts = new Map();
 
 export async function syncBrevoContact(record, {
-  apiKey = process.env.BREVO_API_KEY,
+  apiKey = process.env.BREVO_API_KEY || process.env.Brevo_api,
   listId = process.env.BREVO_WAITLIST_LIST_ID,
   request = fetch,
 } = {}) {
